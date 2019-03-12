@@ -1,0 +1,13 @@
+- alias: "Rule 2 - Away mode"
+  hide_entity: true
+  trigger:
+    platform: state
+    entity_id: binary_sensor.anthony_home
+    from: 'on'
+    to: 'off'
+    for:
+      minutes: 15
+  action:
+    - service: homeassistant.turn_off
+      entity_id: 
+        - group.all_lights_simple

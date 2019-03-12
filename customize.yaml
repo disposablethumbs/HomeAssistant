@@ -1,0 +1,15 @@
+group.all_switches:
+  hidden: true
+
+script.diffuser_power:
+  icon: mdi:water
+script.heater_power:
+  icon: mdi:fan
+script.heater_mode:
+  icon: mdi:fan
+script.pc_power:
+  icon: mdi:power
+script.receiver_vol_up:
+  icon: mdi:volume-high
+script.receiver_vol_down:
+  icon: mdi:volume-medium

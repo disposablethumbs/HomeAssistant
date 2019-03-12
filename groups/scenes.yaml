@@ -1,0 +1,5 @@
+main_scenes:
+  name: Main Light Scenes
+  entities: 
+    - scene.normal
+    - scene.urban_temple

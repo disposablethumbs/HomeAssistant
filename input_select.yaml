@@ -1,0 +1,7 @@
+living_room_hub:
+  name: Harmony Control
+  icon: mdi:monitor
+  options:
+    - PowerOff
+    - Watch PC
+    - Listen to Music

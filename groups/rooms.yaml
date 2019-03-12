@@ -1,0 +1,52 @@
+room_kitchen:
+  name: Kitchen
+  control: hidden
+  entities:
+    - switch.kitchen_light_switch
+    - light.kitchen_left_front
+    - light.kitchen_right_front
+    - light.kitchen_rear
+    - light.entry
+    - switch.frontdoor
+room_living_room:
+  name: Living Room
+  control: hidden
+  entities:
+    - switch.living_room_chandelier
+    - switch.living_room_dome
+    - light.living_room_hanging
+    - light.living_room_dome_left
+    - light.living_room_dome_right
+    - light.hallway
+    - light.aurora
+    - input_select.living_room_hub
+    - script.receiver_vol_up
+    - script.receiver_vol_down
+    - script.pc_power
+    - switch.pc_outlet
+    - script.diffuser_power
+    - script.humidifier_power
+    - switch.space_heater_switch
+    - script.heater_power
+    - script.heater_mode
+    
+room_office:
+  name: Office
+  control: hidden
+  entities:
+    - switch.office_light_switch
+    - light.office_dome_left
+    - light.office_dome_right
+    - light.office_lamp_top
+    - light.office_lamp_bottom
+    - binary_sensor.network
+    - switch.modem
+
+room_bedroom:
+  name: Bedroom
+  control: hidden
+  entities:
+    - switch.bedroom_light_switch
+    - light.bedroom_light_1
+    - light.bedroom_light_2
+    - media_player.bedroom_chromecast

@@ -1,0 +1,39 @@
+- alias: Harmony
+  hide_entity: true
+  trigger:
+    platform: state
+    entity_id: input_select.living_room_hub
+  action:
+    - service: remote.turn_on
+      entity_id: remote.living_room
+      data_template:
+        activity: >
+          {% if is_state("input_select.living_room_hub", "Watch PC") %}
+            Watch PC
+          {% elif is_state("input_select.living_room_hub", "Listen to Music") %}
+            Listen to Music
+          {% else %}
+          {% endif %}
+
+- alias: Harmony Off
+  hide_entity: true
+  trigger:
+    platform: state
+    entity_id: input_select.living_room_hub
+    to: PowerOff
+  action:
+    - service: script.harmony_turn_off
+
+- alias: Start - Update Harmony status
+  hide_entity: true
+  trigger:
+    - platform: state
+      entity_id: remote.living_room
+    - platform: homeassistant
+      event: start
+  action:
+    service: input_select.select_option
+    data_template:
+      entity_id: input_select.living_room_hub
+      option: >
+        {{ states.remote.living_room.attributes.current_activity }}

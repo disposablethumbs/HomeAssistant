@@ -1,0 +1,53 @@
+all_lights_simple:
+  name: All Lights 
+  entities:
+    - switch.kitchen_light_switch
+    - light.entry
+    - switch.living_room_chandelier
+    - switch.living_room_dome
+    - light.hallway
+    - light.aurora
+    - light.living_room_tv_lightstrip
+    - light.living_room_bloom
+    - switch.office_light_switch
+    - light.office_lamp_top
+    - light.office_lamp_bottom
+    - switch.bedroom_light_switch
+
+kitchen_lights:
+  name: Kitchen Lights 
+  entities:
+    - switch.kitchen_light_switch
+    - light.entry
+living_room_lights:
+  name: Living Room Lights 
+  entities:
+    - switch.living_room_chandelier
+    - switch.living_room_dome
+    - light.hallway
+office_lights:
+  name: Office Lights 
+  entities:
+    - switch.office_light_switch
+    - light.office_lamp_top
+    - light.office_lamp_bottom 
+bedroom_lights:
+  name: Bedroom
+  entities: 
+    - switch.bedroom_light_switch
+
+accent_lights:
+  name: Accent Lights 
+  entities:
+    - light.aurora
+    - light.living_room_tv_lightstrip
+    - light.living_room_bloom
+
+light_switches:
+  name: Light Switches 
+  entities:
+    - switch.kitchen_light_switch
+    - switch.living_room_chandelier
+    - switch.living_room_dome
+    - switch.office_light_switch
+    - switch.bedroom_light_switch

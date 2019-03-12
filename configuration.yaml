@@ -1,0 +1,143 @@
+homeassistant:
+  name: Apartment
+  latitude: !secret latitude
+  longitude: !secret longitude
+  elevation: !secret elevation
+  unit_system: metric
+  time_zone: America/Toronto
+  
+  customize: !include customize.yaml
+
+frontend:
+  themes: !include_dir_merge_named themes/
+  javascript_version: auto
+lovelace:
+  mode: yaml
+
+config:
+
+http:
+  api_password: !secret api_pass
+  base_url: !secret ddns_url
+  ssl_certificate: /ssl/fullchain.pem
+  ssl_key: /ssl/privkey.pem
+  login_attempts_threshold: 5
+
+hassio: 
+
+mqtt:
+  broker: !secret ip_piserver
+  port: 1883
+  client_id: hassio
+  username: !secret mqtt_user
+  password: !secret mqtt_pass
+
+recorder:
+  purge_keep_days: 7
+  exclude:
+    domains:
+      - automation
+      - weblink
+      - updater
+    entities:
+      - sun.sun # Don't record sun data
+      - sensor.last_boot # Comes from 'systemmonitor' sensor platform
+      - sensor.date
+
+snips:
+intent_script: !include intent_script.yaml
+
+device_tracker: !include device_trackers.yaml
+owntracks:
+
+updater:
+discovery:
+conversation:
+history:
+logbook:
+map:
+sun:
+
+weather:
+  - platform: darksky
+    api_key: !secret dark_sky_key
+    mode: daily
+
+tts:
+  - platform: google
+cloud:
+
+<<<<<<< HEAD
+ios:
+
+ifttt:
+  key: !secret ifttt_key
+
+xiaomi_aqara:
+  discovery_retry: 10
+  gateways:
+    - mac: !secret aqara_gateway_mac
+      key: !secret aqara_gateway_key
+
+# Lights
+hue:
+  bridges:
+    - host: !secret ip_hue_bridge
+      allow_unreachable: true
+      allow_hue_groups: true
+
+light: !include lights.yaml
+
+scene: !include scenes.yaml
+
+# Media player
+media_player: !include media_players.yaml
+
+=======
+ifttt:
+  key: !secret ifttt_key
+
+>>>>>>> Added ifttt
+# Chromecast
+cast:
+  media_player:
+  - host: !secret ip_googlecast_bedroom 
+
+# Thermostat 
+nest:
+  client_id: !secret nest_id
+  client_secret: !secret nest_secret
+
+# Harmony
+remote:
+  - platform: harmony
+    name: Living Room
+    host: !secret ip_harmony_livingroom
+  - platform: harmony
+    name: Office 
+    host: !secret ip_harmony_office
+
+# Switches
+switch:
+  - platform: tplink
+    name: Space Heater Switch
+    host: !secret ip_switch_spaceheater
+
+# Wemo
+wemo:
+  static:
+    - !secret ip_sonoff_frontdoor
+    - !secret ip_kitchen_lightswitch
+    - !secret ip_livingroom_chandelier
+    - !secret ip_livingroom_dome
+    - !secret ip_office_lightswitch
+    - !secret ip_bedroom_lightswitch
+    - !secret ip_pc_outlet
+    - !secret ip_modem
+
+automation: !include_dir_merge_list automation/
+binary_sensor: !include binary_sensors.yaml
+group: !include_dir_merge_named groups/
+input_select: !include input_select.yaml
+script: !include_dir_merge_named scripts/
+sensor: !include sensors.yaml

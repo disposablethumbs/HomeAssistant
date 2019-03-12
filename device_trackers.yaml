@@ -1,0 +1,7 @@
+- platform: ping
+  consider_home: 30
+  hosts:
+    iphone_ping: 192.168.1.6
+
+- platform: bluetooth_tracker
+  interval_seconds: 30

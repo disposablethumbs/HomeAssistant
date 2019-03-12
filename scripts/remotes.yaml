@@ -1,0 +1,75 @@
+harmony_turn_off:
+  alias: Turn Off Harmony
+  sequence:
+  - service: remote.turn_off
+    entity_id: remote.living_room
+
+diffuser_power:
+  alias: Diffuser Power
+  sequence:
+  - service: remote.send_command
+    data:
+      entity_id: remote.living_room
+      command:
+        - PowerToggle
+      device: 47718952
+
+humidifier_power:
+  alias: Humidifier Power
+  sequence:
+  - service: remote.send_command
+    data:
+      entity_id: remote.living_room
+      command:
+        - PowerToggle
+      device: 60749211
+
+heater_power:
+  alias: Heater Power
+  sequence:
+  - service: remote.send_command
+    data:
+      entity_id: remote.living_room
+      command:
+        - PowerToggle
+      device: 39447120
+
+heater_mode:
+  alias: Heater Mode
+  sequence:
+  - service: remote.send_command
+    data:
+      entity_id: remote.living_room
+      command:
+        - HeatMode
+      device: 39447120
+
+pc_power:
+  alias: PC Power
+  sequence:
+  - service: remote.send_command
+    data:
+      entity_id: remote.living_room
+      command:
+        - PowerToggle
+      device: 32796927
+
+receiver_vol_down:
+  alias: Volume Down
+  sequence:
+  - service: remote.send_command
+    data:
+      entity_id: remote.living_room
+      command:
+        - VolumeDown
+      device: 34419124
+
+receiver_vol_up:
+  alias: Volume Up
+  sequence:
+  - service: remote.send_command
+    data:
+      entity_id: remote.living_room
+      command:
+        - VolumeUp
+      device: 34419124

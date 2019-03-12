@@ -1,0 +1,185 @@
+title: Apartment
+
+resources:
+  - url: /local/button-card.js
+    type: module
+  - url: /local/mini-media-player-bundle.js?v=1.0.2
+    type: module
+
+custom_updater:
+  card_urls:
+    - https://raw.githubusercontent.com/kuuji/button-card/master/tracker.json
+    - https://raw.githubusercontent.com/kalkih/mini-media-player/master/tracker.json
+    - https://raw.githubusercontent.com/robmarkcole/Hue-sensors-HASS/master/custom_updater.json
+
+background: "#303030"
+
+views:
+  - title: DASHBOARD
+    theme: darkcyan
+    cards:
+      - type: weather-forecast
+        entity: weather.dark_sky
+
+      - type: thermostat
+        entity: climate.apartment_thermostat
+
+      - type: horizontal-stack
+        cards:
+        - type: entity-button
+          entity: light.main
+          name: Main Lights On
+          icon: mdi:lightbulb
+          tap_action:
+            action: call-service
+            service: script.turn_on
+            service_data:
+              entity_id: script.main_lights_on
+          hold_action:
+            action: more-info
+        - type: entity-button
+          entity: group.all_lights_simple
+          name: All Lights Off
+          icon: mdi:lightbulb-outline
+          tap_action:
+            action: call-service
+            service: homeassistant.turn_off
+            service_data:
+              entity_id: group.all_lights_simple
+        - type: entity-button
+          entity: binary_sensor.front_door_sensor
+          name: Front Door
+          icon: mdi:door
+          tap_action:
+            action: call-service
+            service: switch.turn_on
+            service_data:
+              entity_id: switch.frontdoor
+
+        
+      - type: "custom:mini-media-player"
+        entity: media_player.spotify
+
+  - title: Lights
+    icon: mdi:lightbulb-on
+    theme: darkcyan
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: "custom:button-card"
+                name: Kitchen
+                entity: group.kitchen_lights
+                icon: mdi:fridge
+                color_off: rgb(110,110,110)
+              - type: "custom:button-card"
+                name: Living Room
+                entity: group.living_room_lights
+                icon: mdi:sofa
+                color_off: rgb(110,110,110)
+              - type: "custom:button-card"
+                name: Office
+                entity: group.office_lights
+                icon: mdi:desk-lamp
+                color_off: rgb(110,110,110)
+              - type: "custom:button-card"
+                name: Bedroom
+                entity: group.bedroom_lights
+                icon: mdi:bed-empty
+                color_off: rgb(110,110,110)
+          - type: horizontal-stack
+            cards:
+              - type: "custom:button-card"
+                name: Normal
+                action: service
+                service:
+                  domain: scene
+                  action: turn_on
+                  data:
+                    entity_id: scene.normal
+              - type: "custom:button-card"
+                name: Urban Temple
+                action: service
+                service:
+                  domain: scene
+                  action: turn_on
+                  data:
+                    entity_id: scene.urban_temple
+
+          - type: entities
+            title: Lights
+            entities:
+              - type: section
+                label: Kitchen
+              - entity: light.kitchen
+              - entity: light.kitchen_left_front
+                name: Left Front
+              - entity: light.kitchen_right_front
+                name: Right Front
+              - entity: light.kitchen_rear
+                name: Rear
+              - entity: light.entry
+                name: Entry
+
+              - type: section
+                label: Living Room
+              - entity: light.living_room
+              - entity: light.living_room_hanging
+                name: Hanging
+              - entity: light.living_room_dome_left
+                name: Dome Left
+              - entity: light.living_room_dome_right
+                name: Dome Right
+              - entity: light.hallway
+                name: Hallway
+
+              - type: section
+                label: Accent
+              - light.aurora
+              - entity:  light.living_room_bloom
+                name: Bloom
+              - entity: light.living_room_tv
+                name: TV
+
+              - type: section
+                label: Office
+              - entity: light.office
+              - entity: light.office_dome_left
+                name: Dome Left
+              - entity: light.office_dome_right
+                name: Dome Right
+              - entity: light.office_lamp_top
+                name: Lamp Top
+              - entity: light.office_lamp_bottom
+                name: Lamp Bottom
+
+              - type: section
+                label: Bedroom
+              - entity: light.bedroom
+              - entity: light.bedroom_light_1
+                name: Dome 1
+              - entity: light.bedroom_light_2
+                name: Dome 2
+
+  # Media View
+  - title: Media
+    icon: mdi:play-circle
+    theme: darkcyan
+    cards:
+      - type: "custom:mini-media-player"
+        entity: media_player.spotify
+
+      - type: entities
+        title: Harmony
+        show_header_toggle: false
+        entities:
+          - input_select.living_room_hub
+          - script.receiver_vol_up
+          - script.receiver_vol_down
+          - script.pc_power
+          - switch.pc_outlet
+    
+
+      - type: "custom:mini-media-player"
+        entity: media_player.bedroom_chromecast

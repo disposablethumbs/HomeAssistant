@@ -1,0 +1,45 @@
+- alias: "Turn on office lamp with wall switch" 
+  hide_entity: true
+  trigger:
+    platform: state
+    entity_id: switch.office_light_switch
+    from: 'off'
+    to: 'on'
+  action: 
+    - service: light.turn_on
+      data:
+        entity_id: light.office_lamp_top,light.office_lamp_bottom
+        brightness: 255
+        kelvin: 2700
+
+- alias: "Turn off office lamp with wall switch" 
+  hide_entity: true
+  trigger:
+    platform: state
+    entity_id: switch.office_light_switch
+    from: 'on'
+    to: 'off'
+  action: 
+    - service: light.turn_off
+      data:
+        entity_id: light.office_lamp_top,light.office_lamp_bottom
+
+- alias: "Turn on lights before sunset if I am home"
+  hide_entity: true
+  trigger:
+    - platform: time
+      at: '16:30:00'
+    - platform: sun
+      event: sunset
+      offset: "-1:30:00"
+  condition:
+    condition: state
+    entity_id: binary_sensor.anthony_home
+    state: 'on'
+  action:
+    - service: homeassistant.turn_on
+      entity_id: 
+        - group.living_room_lights
+        - group.kitchen_lights
+    - service: scene.turn_on
+      entity_id: scene.main_normal

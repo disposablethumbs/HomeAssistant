@@ -1,0 +1,33 @@
+hue_light_groups:
+  name: Hue Rooms
+  entities:
+   - light.kitchen
+   - light.living_room
+   - light.office
+
+hue_kitchen_lights:
+  name: Kitchen
+  entities:
+    - light.kitchen_left_front
+    - light.kitchen_right_front
+    - light.kitchen_rear
+    - light.entry
+hue_living_room_lights:
+  name: Living Room
+  entities:
+    - light.living_room_hanging
+    - light.living_room_dome_left
+    - light.living_room_dome_right
+    - light.hallway
+hue_office_lights:
+  name: Office Lights 
+  entities:
+    - light.office_dome_left
+    - light.office_dome_right
+    - light.office_lamp_top
+    - light.office_lamp_bottom
+hue_accent_lights:
+  name: Accent Lights 
+  entities:
+    - light.living_room_tv_lightstrip
+    - light.living_room_bloom

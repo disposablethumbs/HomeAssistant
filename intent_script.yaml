@@ -1,0 +1,12 @@
+#+=============================
+# Snips Intents
+#==============================  
+  
+OpenDoor:
+  action:
+    - service: switch.turn_on
+      data:
+        entity_id: switch.frontdoor
+    - service: snips.say
+      data:
+        text: Okay, opening the door

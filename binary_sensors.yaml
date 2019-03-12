@@ -1,0 +1,24 @@
+# Determine if home
+- platform: 'bayesian'
+  prior: 0.75
+  name: 'Anthony Home'
+  probability_threshold: 0.9
+  observations:
+      # Network
+    - entity_id: 'device_tracker.iphone_ping'
+      prob_given_true: 0.8
+      prob_given_false: 0.2
+      platform: 'state'
+      to_state: 'home'
+      # iPhone Bluetooth
+    - entity_id: 'device_tracker.the_ijarvis'
+      prob_given_true: 0.9
+      prob_given_false: 0.1
+      platform: 'state'
+      to_state: 'home'
+
+# Check network connectivity
+- platform: ping
+  host: 1.1.1.1
+  name: Network
+  scan_interval: 30

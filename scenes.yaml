@@ -1,0 +1,35 @@
+- name: Normal
+  entities:
+    light.kitchen:
+      state: on
+      brightness: 255
+      kelvin: 2700
+    light.living_room:
+      state: on
+      brightness: 255
+      kelvin: 2700
+    group.accent_lights:
+      state: off
+
+- name: Urban Temple
+  entities:
+    light.kitchen:
+      state: off
+    switch.living_room_chandelier: on
+    switch.living_room_dome: on
+    light.living_room:
+      state: on
+      brightness: 70
+      rgb_color: [255,127,25]
+    light.living_room_tv_lightstrip:
+      state: on
+      brightness: 100
+      rgb_color: [255,57,196]
+    light.living_room_bloom:
+      state: on
+      brightness: 100
+      rgb_color: [255,57,196]
+    light.aurora:
+      state: on
+      brightness: 30
+      effect: "Pink Sizzle"

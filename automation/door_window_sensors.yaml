@@ -1,0 +1,22 @@
+- alias: Front Door Open
+  trigger: 
+    platform: state
+    entity_id: binary_sensor.front_door_sensor
+    from: 'off'
+    to: 'on'
+  condition:
+    - condition: state
+      entity_id: sun.sun
+      state: below_horizon
+    - condition: template
+      value_template: "{{ (as_timestamp(now())-as_timestamp(states.sensor.entrance_dimmer_switch.last_updated)) > 5 }}"
+  action:
+    - service: switch.turn_on
+      entity_id: 
+        - switch.kitchen_light_switch
+    - service: light.turn_on
+      entity_id:
+        - light.kitchen
+      data:
+        brightness: 255
+        kelvin: 2700
