@@ -18,23 +18,23 @@ kitchen_lights:
   name: Kitchen Lights 
   entities:
     - switch.kitchen_light_switch
-    - light.entry
+    - light.kitchen
 living_room_lights:
   name: Living Room Lights 
   entities:
     - switch.living_room_chandelier
     - switch.living_room_dome
-    - light.hallway
+    - light.living_room
 office_lights:
   name: Office Lights 
   entities:
     - switch.office_light_switch
-    - light.office_lamp_top
-    - light.office_lamp_bottom 
+    - light.office 
 bedroom_lights:
   name: Bedroom
   entities: 
     - switch.bedroom_light_switch
+    - light.bedroom
 
 accent_lights:
   name: Accent Lights 

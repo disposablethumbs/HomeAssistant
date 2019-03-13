@@ -15,6 +15,7 @@ custom_updater:
 background: "#303030"
 
 views:
+  # Dashboard View
   - title: DASHBOARD
     theme: darkcyan
     cards:
@@ -26,6 +27,8 @@ views:
 
       - type: horizontal-stack
         cards:
+
+        # Main Lights
         - type: entity-button
           entity: light.main
           name: Main Lights On
@@ -37,6 +40,8 @@ views:
               entity_id: script.main_lights_on
           hold_action:
             action: more-info
+
+        # All Lights Off
         - type: entity-button
           entity: group.all_lights_simple
           name: All Lights Off
@@ -46,6 +51,8 @@ views:
             service: homeassistant.turn_off
             service_data:
               entity_id: group.all_lights_simple
+
+        # Front Door Open
         - type: entity-button
           entity: binary_sensor.front_door_sensor
           name: Front Door
@@ -56,10 +63,7 @@ views:
             service_data:
               entity_id: switch.frontdoor
 
-        
-      - type: "custom:mini-media-player"
-        entity: media_player.spotify
-
+  # Lights View
   - title: Lights
     icon: mdi:lightbulb-on
     theme: darkcyan
@@ -68,26 +72,149 @@ views:
         cards:
           - type: horizontal-stack
             cards:
-              - type: "custom:button-card"
-                name: Kitchen
-                entity: group.kitchen_lights
-                icon: mdi:fridge
-                color_off: rgb(110,110,110)
-              - type: "custom:button-card"
-                name: Living Room
-                entity: group.living_room_lights
-                icon: mdi:sofa
-                color_off: rgb(110,110,110)
-              - type: "custom:button-card"
-                name: Office
-                entity: group.office_lights
-                icon: mdi:desk-lamp
-                color_off: rgb(110,110,110)
-              - type: "custom:button-card"
-                name: Bedroom
-                entity: group.bedroom_lights
-                icon: mdi:bed-empty
-                color_off: rgb(110,110,110)
+              # Kitchen
+              # Turn on
+              - type: conditional
+                conditions:
+                  - entity: binary_sensor.kitchen_lights
+                    state: "off"
+                card:
+                  type: "custom:button-card"
+                  name: Kitchen
+                  entity: group.kitchen_lights
+                  icon: mdi:fridge
+                  color: rgb(110,110,110)
+                  action: service
+                  service:
+                    domain: homeassistant
+                    action: turn_on
+                    data:
+                      entity_id: group.kitchen_lights
+              # Turn off
+              - type: conditional
+                conditions:
+                  - entity: binary_sensor.kitchen_lights
+                    state: "on"
+                card:
+                  type: "custom:button-card"
+                  name: Kitchen
+                  entity: group.kitchen_lights
+                  icon: mdi:fridge
+                  color: rgb(207,207,207)
+                  action: service
+                  service:
+                    domain: homeassistant
+                    action: turn_off
+                    data:
+                      entity_id: group.kitchen_lights
+
+              # Living Room
+              # Turn on
+              - type: conditional
+                conditions:
+                  - entity: binary_sensor.living_room_lights
+                    state: "off"
+                card:
+                  type: "custom:button-card"
+                  name: Living Room
+                  entity: group.living_room_lights
+                  icon: mdi:sofa
+                  color: rgb(110,110,110)
+                  service:
+                    domain: homeassistant
+                    action: turn_on
+                    data:
+                      entity_id: group.living_room_lights
+              # Turn off
+              - type: conditional
+                conditions:
+                  - entity: binary_sensor.living_room_lights
+                    state: "on"
+                card:
+                  type: "custom:button-card"
+                  name: Living Room
+                  entity: group.living_room_lights
+                  icon: mdi:sofa
+                  color: rgb(207,207,207)
+                  action: service
+                  service:
+                    domain: homeassistant
+                    action: turn_off
+                    data:
+                      entity_id: group.living_room_lights
+
+              # Office
+              # Turn on
+              - type: conditional
+                conditions:
+                  - entity: binary_sensor.office_lights
+                    state: "off"
+                card:
+                  type: "custom:button-card"
+                  name: Office
+                  entity: group.office_lights
+                  icon: mdi:desk-lamp
+                  color: rgb(110,110,110)
+                  service:
+                    domain: homeassistant
+                    action: turn_on
+                    data:
+                      entity_id: group.office_lights
+              # Turn off
+              - type: conditional
+                conditions:
+                  - entity: binary_sensor.office_lights
+                    state: "on"
+                card:
+                  type: "custom:button-card"
+                  name: Office
+                  entity: group.office_lights
+                  icon: mdi:desk-lamp
+                  color: rgb(207,207,207)
+                  action: service
+                  service:
+                    domain: homeassistant
+                    action: turn_off
+                    data:
+                      entity_id: group.office_lights
+
+
+              # Bedroom
+              # Turn on
+              - type: conditional
+                conditions:
+                  - entity: binary_sensor.bedroom_lights
+                    state: "off"
+                card:
+                  type: "custom:button-card"
+                  name: Bedroom
+                  entity: group.bedroom_lights
+                  icon: mdi:bed-empty
+                  color: rgb(110,110,110)
+                  service:
+                    domain: homeassistant
+                    action: turn_on
+                    data:
+                      entity_id: group.bedroom_lights
+              # Turn off
+              - type: conditional
+                conditions:
+                  - entity: binary_sensor.bedroom_lights
+                    state: "on"
+                card:
+                  type: "custom:button-card"
+                  name: Bedroom
+                  entity: group.bedroom_lights
+                  icon: mdi:bed-empty
+                  color: rgb(207,207,207)
+                  action: service
+                  service:
+                    domain: homeassistant
+                    action: turn_off
+                    data:
+                      entity_id: group.bedroom_lights
+
+          # Scenes
           - type: horizontal-stack
             cards:
               - type: "custom:button-card"
@@ -107,6 +234,7 @@ views:
                   data:
                     entity_id: scene.urban_temple
 
+          # Lights list
           - type: entities
             title: Lights
             entities:

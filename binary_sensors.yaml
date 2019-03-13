@@ -22,3 +22,38 @@
   host: 1.1.1.1
   name: Network
   scan_interval: 30
+
+# Lights
+- platform: template
+  sensors:
+    main_lights:
+      friendly_name: "Main Lights All"
+      value_template: >-
+        {{ is_state('binary_sensor.kitchen_lights', 'on') 
+           and is_state('binary_sensor.living_room_lights', 'on') }}
+    kitchen_lights:
+      friendly_name: "Kitchen Lights All"
+      value_template: >-
+        {{ is_state('light.kitchen_left_front', 'on') 
+           and is_state('light.kitchen_right_front', 'on') 
+           and is_state('light.kitchen_rear', 'on') 
+           and is_state('light.entry', 'on') }} 
+    living_room_lights:
+      friendly_name: "Living Room Lights All"
+      value_template: >-
+        {{ is_state('light.living_room_hanging', 'on') 
+           and is_state('light.living_room_dome_left', 'on') 
+           and is_state('light.living_room_dome_right', 'on') 
+           and is_state('light.hallway', 'on') }} 
+    office_lights:
+      friendly_name: "Office Lights All"
+      value_template: >-
+        {{ is_state('light.office_dome_left', 'on') 
+           and is_state('light.office_dome_right', 'on') 
+           and is_state('light.office_lamp_top', 'on') 
+           and is_state('light.office_lamp_bottom', 'on') }}
+    bedroom_lights:
+      friendly_name: "Bedroom Lights All"
+      value_template: >-
+        {{ is_state('light.bedroom_light_1', 'on') 
+           and is_state('light.bedroom_light_2', 'on') }}
