@@ -63,6 +63,27 @@ views:
             service_data:
               entity_id: switch.frontdoor
 
+      - type: horizontal-stack
+        cards:
+        - type: entity-button
+          entity: switch.space_heater_switch
+          tap_action:
+            action: toggle
+        - type: entity-button
+          entity: script.heater_power
+          tap_action:
+            action: call-service
+            service: script.turn_on
+            service_data:
+              entity_id: script.heater_power
+        - type: entity-button
+          entity: script.heater_mode
+          tap_action:
+            action: call-service
+            service: script.turn_on
+            service_data:
+              entity_id: script.heater_mode
+
   # Lights View
   - title: Lights
     icon: mdi:lightbulb-on
