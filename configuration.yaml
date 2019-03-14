@@ -81,7 +81,7 @@ speedtestdotnet:
     - upload
 
 xiaomi_aqara:
-  discovery_retry: 10
+  discovery_retry: 15
   gateways:
     - mac: !secret aqara_gateway_mac
       key: !secret aqara_gateway_key
@@ -120,10 +120,9 @@ remote:
     host: !secret ip_harmony_office
 
 # Switches
-switch:
-  - platform: tplink
-    name: Space Heater Switch
-    host: !secret ip_switch_spaceheater
+tplink:
+  switch:
+    - host: !secret ip_switch_spaceheater
 
 # Wemo
 wemo:
