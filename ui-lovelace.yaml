@@ -330,6 +330,56 @@ views:
           - script.pc_power
           - switch.pc_outlet
     
-
       - type: "custom:mini-media-player"
         entity: media_player.bedroom_chromecast
+
+  # Status View
+  - title: Network
+    icon: mdi:server-network
+    theme: darkcyan
+    cards:
+      # Device Status
+      - type: glance
+        title: Device Status
+        entities:
+          - entity: sensor.memory_use_percent
+            name: Memory Use
+          - entity: sensor.disk_use_percent_home
+            name: Disk Use
+          - entity: sensor.last_boot
+            name: Restart Hass
+            icon: mdi:restart
+            tap_action:
+              action: call-service
+              service: homeassistant.restart
+
+      # Network Status
+      - type: glance
+        title: Network Status
+        entities:
+          - entity: binary_sensor.network
+            hold_action:
+              action: call-service
+              service: automation.trigger
+              service_data:
+                entity_id: automation.restart_modem
+          - entity: sensor.speedtest_ping
+            name: Ping
+          - entity: sensor.speedtest_upload
+            name: Upload
+          - entity: sensor.speedtest_download
+            name: Download
+
+      # Router Graphs
+      - type: horizontal-stack
+        cards:
+        - type: sensor
+          entity: sensor.wireless_router_archer_c7_kbyte_sec_sent
+          name: kB/s Sent
+          graph: line
+          unit: kB
+        - type: sensor
+          entity: sensor.wireless_router_archer_c7_kbyte_sec_received
+          name: kB/s Received
+          graph: line
+          unit: kB

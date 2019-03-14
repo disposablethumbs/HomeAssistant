@@ -1,6 +1,15 @@
 # Weather prediction
 - platform: yr
 
+- platform: systemmonitor
+  resources:
+    - type: network_in
+      arg: 'Local Area Connection'
+    - type: disk_use_percent
+      arg: /home
+    - type: memory_use_percent
+    - type: last_boot
+
 - platform: template
   sensors:
     current_activity:
