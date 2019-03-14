@@ -16,4 +16,4 @@
       friendly_name: 'Current Activity'
       value_template: '{{ states.remote.living_room.attributes.current_activity }}'
 
-- platform: hue
+- platform: huesensor
