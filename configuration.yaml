@@ -119,6 +119,9 @@ remote:
     name: Office 
     host: !secret ip_harmony_office
 
+roku:
+  - host: !secret ip_roku
+
 # Switches
 tplink:
   switch:

@@ -10,6 +10,8 @@
         activity: >
           {% if is_state("input_select.living_room_hub", "Watch PC") %}
             Watch PC
+          {% elif is_state("input_select.living_room_hub", "Watch Roku") %}
+            Watch Roku
           {% elif is_state("input_select.living_room_hub", "Listen to Music") %}
             Listen to Music
           {% else %}

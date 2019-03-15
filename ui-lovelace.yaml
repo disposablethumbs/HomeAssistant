@@ -5,6 +5,8 @@ resources:
     type: module
   - url: /local/mini-media-player-bundle.js?v=1.0.2
     type: module
+  - url: /local/roku-card.js?v=0
+    type: module
 
 custom_updater:
   card_urls:
@@ -328,6 +330,16 @@ views:
           - script.receiver_vol_down
           - script.pc_power
           - switch.pc_outlet
+
+      - type: "custom:roku-card"
+        entity: media_player.living_room_roku
+        name: Roku
+        tv: true
+        power: 
+          service: remote.turn_on
+          service_data:
+            entity_id: remote.living_room
+            activity: Watch Roku
     
       - type: "custom:mini-media-player"
         entity: media_player.bedroom_chromecast
