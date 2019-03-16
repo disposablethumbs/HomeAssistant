@@ -23,8 +23,16 @@ views:
       - type: weather-forecast
         entity: weather.dark_sky
 
-      - type: thermostat
-        entity: climate.apartment_thermostat
+      - type: horizontal-stack
+        cards:
+        - type: picture-glance
+          entities: []
+          title: Living Room
+          camera_image: camera.living_room
+        - type: thermostat
+          entity: climate.apartment_thermostat
+          name: Apartment
+        
 
       - type: horizontal-stack
         cards:
