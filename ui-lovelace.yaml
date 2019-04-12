@@ -295,7 +295,7 @@ views:
 
               - type: section
                 label: Accent
-              - light.aurora
+              - light.nanoleaf
               - entity:  light.living_room_bloom
                 name: Bloom
               - entity: light.living_room_tv

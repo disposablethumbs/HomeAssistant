@@ -1,4 +1,4 @@
-- platform: nanoleaf_aurora
+- platform: nanoleaf
   host: !secret ip_nanoleaf
   token: !secret nanoleaf_token
 
