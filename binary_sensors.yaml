@@ -23,6 +23,12 @@
   name: Network
   scan_interval: 30
 
+# Google Home
+- platform: ping
+  host: 192.168.1.70
+  name: Google Home
+  scan_interval: 60
+
 # Lights
 - platform: template
   sensors:
