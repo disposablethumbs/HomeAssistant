@@ -18,7 +18,7 @@
     service: media_player.turn_off
     entity_id: media_player.bedroom_chromecast
 
-- alias: "Dim Lights when Bedroom TV playing"
+- alias: "Bedroom TV playing"
   trigger: 
     platform: state
     entity_id: media_player.bedroom_chromecast
@@ -29,7 +29,11 @@
       value_template: '{% if states.light.bedroom.state == "on"  %}{{ states.light.bedroom.attributes.brightness }}{% else %}0{% endif %}'
       above: 150
   action:
-    service: light.turn_on
-    data:
-      entity_id: light.bedroom
-      brightness: 150
+    - service: light.turn_on
+      data:
+        entity_id: light.bedroom
+        brightness: 150
+    - service: media_player.volume_set
+      data:
+        entity_id: media_player.bedroom_chromecast
+        volume_level: 0.5
