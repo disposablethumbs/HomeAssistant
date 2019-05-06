@@ -5,6 +5,16 @@ homeassistant:
   elevation: !secret elevation
   unit_system: metric
   time_zone: America/Toronto
+  auth_providers:
+    - type: homeassistant
+    - type: trusted_networks
+      trusted_networks:
+        - 192.168.1.0/24
+        - 127.0.0.1
+        - ::1
+      allow_bypass_login: true
+    - type: legacy_api_password
+      api_password: !secret api_pass
   
   customize: !include customize.yaml
 
@@ -17,7 +27,6 @@ lovelace:
 config:
 
 http:
-  api_password: !secret api_pass
   base_url: !secret ddns_url
   ssl_certificate: /ssl/fullchain.pem
   ssl_key: /ssl/privkey.pem
@@ -46,6 +55,24 @@ recorder:
 
 snips:
 intent_script: !include intent_script.yaml
+
+homekit:
+  filter:
+    include_domains:
+      - switch
+  entity_config:
+    switch.frontdoor:
+      name: Front Door
+
+google_assistant:
+  project_id: !secret ga_id
+  exposed_domains:
+    - switch
+  entity_config:
+    switch.frontdoor:
+      name: DOOR
+      aliases:
+        - FRONT_DOOR
 
 device_tracker: !include device_trackers.yaml
 owntracks:
