@@ -296,7 +296,7 @@ views:
               - type: section
                 label: Accent
               - light.nanoleaf
-              - entity:  light.living_room_bloom
+              - entity: light.living_room_bloom
                 name: Bloom
               - entity: light.living_room_tv
                 name: TV
@@ -382,6 +382,7 @@ views:
               service: automation.trigger
               service_data:
                 entity_id: automation.restart_modem
+          - entity: binary_sensor.google_home
           - entity: sensor.speedtest_ping
             name: Ping
           - entity: sensor.speedtest_upload
@@ -402,3 +403,14 @@ views:
           name: kB/s Received
           graph: line
           unit: kB
+
+  # Settings View
+  - title: Settings
+    icon: mdi:settings
+    cards:
+      - type: entities
+        title: Automations
+        show_header_toggle: false
+        entities:
+          - entity: automation.front_door_open
+            name: Front Door - Lights
