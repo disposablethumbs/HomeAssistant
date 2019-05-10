@@ -20,3 +20,13 @@
       data:
         brightness: 255
         kelvin: 2700
+
+- alias: Balcony Door Open
+  trigger:
+    platform: state
+    entity_id: binary_sensor.balcony_door_sensor
+    from: 'off'
+    to: 'on'
+  action:
+    service: climate.turn_off
+    entity_id: climate.apartment_thermostat
