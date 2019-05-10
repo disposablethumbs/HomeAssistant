@@ -154,6 +154,11 @@ tplink:
   switch:
     - host: !secret ip_switch_spaceheater
 
+tuya:
+  username: !secret email
+  password: !secret tuya_password
+  country_code: 1
+
 # Wemo
 wemo:
   static:
