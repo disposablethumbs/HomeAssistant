@@ -328,6 +328,13 @@ views:
     cards:
       - type: "custom:mini-media-player"
         entity: media_player.spotify
+      - type: "custom:mini-media-player"
+        entity: media_player.bedroom_chromecast
+
+      - type: entities
+        entities:
+          - entity: switch.bedroom_tv
+            icon: mdi:television
 
       - type: entities
         title: Harmony
@@ -389,20 +396,6 @@ views:
             name: Upload
           - entity: sensor.speedtest_download
             name: Download
-
-      # Router Graphs
-      - type: horizontal-stack
-        cards:
-        - type: sensor
-          entity: sensor.wireless_router_archer_c7_kbyte_sec_sent
-          name: kB/s Sent
-          graph: line
-          unit: kB
-        - type: sensor
-          entity: sensor.wireless_router_archer_c7_kbyte_sec_received
-          name: kB/s Received
-          graph: line
-          unit: kB
 
   # Settings View
   - title: Settings
