@@ -15,5 +15,15 @@
     current_activity:
       friendly_name: 'Current Activity'
       value_template: '{{ states.remote.living_room.attributes.current_activity }}'
+    compare_temp_indoor_outdoor:
+      friendly_name: 'Temperature Difference Indoor-Outdoor'
+      value_template: >
+        {{ states('sensor.apartment_thermostat_thermostat_temperature') | round(1) 
+          - state_attr('weather.dark_sky','temperature') | round(1) }}
+    compare_temp_current_target:
+      friendly_name: 'Temperature Difference Current-Target'
+      value_template: >
+        {{ states('sensor.apartment_thermostat_thermostat_temperature') | round(1)
+          - states('sensor.apartment_thermostat_thermostat_target') | round(1) }}
 
 - platform: huesensor
