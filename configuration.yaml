@@ -85,6 +85,8 @@ logbook:
 map:
 sun:
 
+system_health:
+
 weather:
   - platform: darksky
     api_key: !secret dark_sky_key
