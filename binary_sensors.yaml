@@ -63,3 +63,9 @@
       value_template: >-
         {{ is_state('light.bedroom_light_1', 'on') 
            and is_state('light.bedroom_light_2', 'on') }}
+    
+    space_heater_connected:
+      friendly_name: 'Space Heater Connected'
+      value_template: >-
+        {{ is_state("switch.space_heater_switch", "on") 
+          or is_state("switch.space_heater_switch", "off") }}
