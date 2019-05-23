@@ -10,6 +10,8 @@
     - type: memory_use_percent
     - type: last_boot
 
+- platform: huesensor
+
 - platform: template
   sensors:
     current_activity:
@@ -25,5 +27,3 @@
       value_template: >
         {{ states('sensor.apartment_thermostat_thermostat_temperature') | round(1)
           - states('sensor.apartment_thermostat_thermostat_target') | round(1) }}
-
-- platform: huesensor
