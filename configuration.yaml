@@ -34,6 +34,12 @@ http:
 
 hassio: 
 
+custom_updater:
+  card_urls:
+    - https://raw.githubusercontent.com/kalkih/mini-media-player/master/tracker.json
+  component_urls:
+    - https://raw.githubusercontent.com/robmarkcole/Hue-sensors-HASS/master/custom_updater.json
+
 mqtt:
   broker: !secret ip_piserver
   port: 1883

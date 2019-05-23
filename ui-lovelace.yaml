@@ -1,23 +1,21 @@
 title: Apartment
 
 resources:
-  - url: /local/button-card.js
+  - url: /customcards/github/custom-cards/tracker-card.js?track=true
     type: module
-  - url: /local/mini-media-player-bundle.js?v=1.0.2
+  - url: /customcards/github/custom-cards/button-card.js?track=true
+    type: module
+  - url: /local/mini-media-player-bundle.js?v=1.1.3
     type: module
   - url: /local/roku-card.js?v=0
     type: module
-
-custom_updater:
-  card_urls:
-    - https://raw.githubusercontent.com/kuuji/button-card/master/tracker.json
-    - https://raw.githubusercontent.com/kalkih/mini-media-player/master/tracker.json
 
 background: "#303030"
 
 views:
   # Dashboard View
   - title: DASHBOARD
+    icon: mdi:home
     theme: darkcyan
     cards:
       - type: weather-forecast
@@ -410,6 +408,7 @@ views:
   - title: Settings
     icon: mdi:settings
     cards:
+      - type: custom:tracker-card
       - type: entities
         title: Automations
         show_header_toggle: false
