@@ -20,10 +20,6 @@ views:
     cards:
       - type: weather-forecast
         entity: weather.dark_sky
-
-      - type: thermostat
-        entity: climate.apartment_thermostat
-        name: Apartment
         
       - type: horizontal-stack
         cards:
@@ -88,6 +84,12 @@ views:
               service: script.turn_on
               service_data:
                 entity_id: script.heater_mode
+
+      # Thermostat
+      - type: thermostat
+        entity: climate.apartment_thermostat
+        name: Apartment
+
 
   # Lights View
   - title: Lights
