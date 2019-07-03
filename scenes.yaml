@@ -20,16 +20,16 @@
     light.living_room:
       state: on
       brightness: 70
-      rgb_color: [255,127,25]
+      rgb_color: [255, 127, 25]
     light.living_room_tv_lightstrip:
       state: on
       brightness: 100
-      rgb_color: [255,57,196]
+      rgb_color: [255, 57, 196]
     light.living_room_bloom:
       state: on
       brightness: 100
-      rgb_color: [255,57,196]
-    light.aurora:
+      rgb_color: [255, 57, 196]
+    light.nanoleaf:
       state: on
       brightness: 30
       effect: "Pink Sizzle"

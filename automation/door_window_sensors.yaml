@@ -1,9 +1,9 @@
 - alias: Front Door Open
-  trigger: 
+  trigger:
     platform: state
     entity_id: binary_sensor.front_door_sensor
-    from: 'off'
-    to: 'on'
+    from: "off"
+    to: "on"
   condition:
     - condition: state
       entity_id: sun.sun
@@ -12,7 +12,7 @@
       value_template: "{{ (as_timestamp(now())-as_timestamp(states.sensor.entrance_dimmer_switch.last_updated)) > 5 }}"
   action:
     - service: switch.turn_on
-      entity_id: 
+      entity_id:
         - switch.kitchen_light_switch
     - service: light.turn_on
       entity_id:
@@ -25,26 +25,26 @@
   trigger:
     platform: state
     entity_id: binary_sensor.balcony_door_sensor
-    to: 'on'
+    to: "on"
   action:
     service: climate.set_operation_mode
     data:
       entity_id: climate.apartment_thermostat
-      operation_mode: 'off'
+      operation_mode: "off"
 
 - alias: Balcony Door Closed
   trigger:
     platform: state
     entity_id: binary_sensor.balcony_door_sensor
-    to: 'off'
+    to: "off"
   action:
     service: climate.set_operation_mode
     data_template:
       entity_id: climate.apartment_thermostat
       operation_mode: >
-        {% if states('sensor.compare_temp_current_target') | float > 0 %}
+        {% if states('sensor.compare_temp_current_target') | float > 1 %}
           cool
-        {% elif states('sensor.compare_temp_current_target') | float < 0 %}
+        {% elif states('sensor.compare_temp_current_target') | float < 1 %}
           heat
         {% else %}
           off

@@ -20,303 +20,202 @@ views:
     cards:
       - type: weather-forecast
         entity: weather.dark_sky
-        
+
       - type: horizontal-stack
         cards:
-        # Main Lights
-        - type: entity-button
-          entity: light.main
-          name: Main Lights On
-          icon: mdi:lightbulb
-          tap_action:
-            action: call-service
-            service: script.turn_on
-            service_data:
-              entity_id: script.main_lights_on
-          hold_action:
-            action: more-info
+          # Main Lights
+          - type: entity-button
+            entity: light.main
+            name: Apartment Lights On
+            icon: mdi:lightbulb
+            tap_action:
+              action: call-service
+              service: script.turn_on
+              service_data:
+                entity_id: script.main_lights_on
+            hold_action:
+              action: more-info
 
-        # All Lights Off
-        - type: entity-button
-          entity: group.all_lights_simple
-          name: All Lights Off
-          icon: mdi:lightbulb-outline
-          tap_action:
-            action: call-service
-            service: homeassistant.turn_off
-            service_data:
-              entity_id: group.all_lights_simple
+          # All Lights Off
+          - type: entity-button
+            entity: group.all_lights_simple
+            name: All Lights Off
+            icon: mdi:lightbulb-outline
+            tap_action:
+              action: call-service
+              service: homeassistant.turn_off
+              service_data:
+                entity_id: group.all_lights_simple
 
-        # Front Door Open
-        - type: entity-button
-          entity: binary_sensor.front_door_sensor
-          name: Front Door
-          icon: mdi:door
-          tap_action:
-            action: call-service
-            service: switch.turn_on
-            service_data:
-              entity_id: switch.frontdoor
+          # Front Door Open
+          - type: entity-button
+            entity: binary_sensor.front_door_sensor
+            name: Front Door
+            icon: mdi:door
+            tap_action:
+              action: call-service
+              service: switch.turn_on
+              service_data:
+                entity_id: switch.frontdoor
 
       # Space Heater
       - type: conditional
         conditions:
           - entity: binary_sensor.space_heater_connected
-            state: 'on'
+            state: "on"
         card:
           type: horizontal-stack
           cards:
-          - type: entity-button
-            entity: switch.space_heater_switch
-            tap_action:
-              action: toggle
-          - type: entity-button
-            entity: script.heater_power
-            tap_action:
-              action: call-service
-              service: script.turn_on
-              service_data:
-                entity_id: script.heater_power
-          - type: entity-button
-            entity: script.heater_mode
-            tap_action:
-              action: call-service
-              service: script.turn_on
-              service_data:
-                entity_id: script.heater_mode
+            - type: entity-button
+              entity: switch.space_heater_switch
+              tap_action:
+                action: toggle
+            - type: entity-button
+              entity: script.heater_power
+              tap_action:
+                action: call-service
+                service: script.turn_on
+                service_data:
+                  entity_id: script.heater_power
+            - type: entity-button
+              entity: script.heater_mode
+              tap_action:
+                action: call-service
+                service: script.turn_on
+                service_data:
+                  entity_id: script.heater_mode
 
       # Thermostat
       - type: thermostat
         entity: climate.apartment_thermostat
         name: Apartment
 
-
   # Lights View
   - title: Lights
     icon: mdi:lightbulb-on
     theme: darkcyan
     cards:
-      - type: vertical-stack
+      - type: light
+        entity: light.all_lights
+      - type: glance
+        title: Rooms
+        entities:
+          - entity: group.kitchen_lights
+            name: Kitchen Lights
+            icon: mdi:lightbulb
+            tap_action:
+              action: call-service
+              service: homeassistant.toggle
+              service_data:
+                entity_id: group.kitchen_lights
+          - entity: group.living_room_lights
+            name: Living Room Lights
+            icon: mdi:lightbulb
+            tap_action:
+              action: call-service
+              service: homeassistant.toggle
+              service_data:
+                entity_id: group.living_room_lights
+          - entity: group.office_lights
+            name: Office Lights
+            icon: mdi:lightbulb
+            tap_action:
+              action: call-service
+              service: homeassistant.toggle
+              service_data:
+                entity_id: group.office_lights
+          - entity: group.bedroom_lights
+            name: Bedroom Lights
+            icon: mdi:lightbulb
+            tap_action:
+              action: call-service
+              service: homeassistant.toggle
+              service_data:
+                entity_id: group.bedroom_lights
+      - type: glance
+        title: Scenes
+        entities:
+          - entity: scene.normal
+            name: Normal
+            tap_action:
+              action: call-service
+              service: scene.turn_on
+              service_data:
+                entity_id: scene.normal
+          - entity: scene.urban_temple
+            name: Urban Temple
+            tap_action:
+              action: call-service
+              service: scene.turn_on
+              service_data:
+                entity_id: scene.urban_temple
+      - type: horizontal-stack
         cards:
-          - type: horizontal-stack
-            cards:
-              # Kitchen
-              # Turn on
-              - type: conditional
-                conditions:
-                  - entity: binary_sensor.kitchen_lights
-                    state: "off"
-                card:
-                  type: "custom:button-card"
-                  name: Kitchen
-                  entity: group.kitchen_lights
-                  icon: mdi:fridge
-                  color: rgb(110,110,110)
-                  action: service
-                  service:
-                    domain: homeassistant
-                    action: turn_on
-                    data:
-                      entity_id: group.kitchen_lights
-              # Turn off
-              - type: conditional
-                conditions:
-                  - entity: binary_sensor.kitchen_lights
-                    state: "on"
-                card:
-                  type: "custom:button-card"
-                  name: Kitchen
-                  entity: group.kitchen_lights
-                  icon: mdi:fridge
-                  color: rgb(207,207,207)
-                  action: service
-                  service:
-                    domain: homeassistant
-                    action: turn_off
-                    data:
-                      entity_id: group.kitchen_lights
+          - type: light
+            entity: light.kitchen
+          - type: light
+            entity: light.living_room
+      - type: light
+        entity: light.accent_lights
+      - type: horizontal-stack
+        cards:
+          - type: light
+            entity: light.office
+          - type: light
+            entity: light.bedroom
 
-              # Living Room
-              # Turn on
-              - type: conditional
-                conditions:
-                  - entity: binary_sensor.living_room_lights
-                    state: "off"
-                card:
-                  type: "custom:button-card"
-                  name: Living Room
-                  entity: group.living_room_lights
-                  icon: mdi:sofa
-                  color: rgb(110,110,110)
-                  service:
-                    domain: homeassistant
-                    action: turn_on
-                    data:
-                      entity_id: group.living_room_lights
-              # Turn off
-              - type: conditional
-                conditions:
-                  - entity: binary_sensor.living_room_lights
-                    state: "on"
-                card:
-                  type: "custom:button-card"
-                  name: Living Room
-                  entity: group.living_room_lights
-                  icon: mdi:sofa
-                  color: rgb(207,207,207)
-                  action: service
-                  service:
-                    domain: homeassistant
-                    action: turn_off
-                    data:
-                      entity_id: group.living_room_lights
+      # Lights list
+      - type: entities
+        show_header_toggle: false
+        title: Lights
+        entities:
+          - type: section
+            label: Kitchen
+          - entity: light.kitchen_left_front
+            name: Left Front
+          - entity: light.kitchen_right_front
+            name: Right Front
+          - entity: light.kitchen_rear
+            name: Rear
+          - entity: light.entry
+            name: Entry
 
-              # Office
-              # Turn on
-              - type: conditional
-                conditions:
-                  - entity: binary_sensor.office_lights
-                    state: "off"
-                card:
-                  type: "custom:button-card"
-                  name: Office
-                  entity: group.office_lights
-                  icon: mdi:desk-lamp
-                  color: rgb(110,110,110)
-                  service:
-                    domain: homeassistant
-                    action: turn_on
-                    data:
-                      entity_id: group.office_lights
-              # Turn off
-              - type: conditional
-                conditions:
-                  - entity: binary_sensor.office_lights
-                    state: "on"
-                card:
-                  type: "custom:button-card"
-                  name: Office
-                  entity: group.office_lights
-                  icon: mdi:desk-lamp
-                  color: rgb(207,207,207)
-                  action: service
-                  service:
-                    domain: homeassistant
-                    action: turn_off
-                    data:
-                      entity_id: group.office_lights
+          - type: section
+            label: Living Room
+          - entity: light.living_room_hanging
+            name: Hanging
+          - entity: light.living_room_dome_left
+            name: Dome Left
+          - entity: light.living_room_dome_right
+            name: Dome Right
+          - entity: light.hallway
+            name: Hallway
 
+          - type: section
+            label: Accent
+          - light.nanoleaf
+          - entity: light.living_room_bloom
+            name: Bloom
+          - entity: light.living_room_tv
+            name: TV
 
-              # Bedroom
-              # Turn on
-              - type: conditional
-                conditions:
-                  - entity: binary_sensor.bedroom_lights
-                    state: "off"
-                card:
-                  type: "custom:button-card"
-                  name: Bedroom
-                  entity: group.bedroom_lights
-                  icon: mdi:bed-empty
-                  color: rgb(110,110,110)
-                  service:
-                    domain: homeassistant
-                    action: turn_on
-                    data:
-                      entity_id: group.bedroom_lights
-              # Turn off
-              - type: conditional
-                conditions:
-                  - entity: binary_sensor.bedroom_lights
-                    state: "on"
-                card:
-                  type: "custom:button-card"
-                  name: Bedroom
-                  entity: group.bedroom_lights
-                  icon: mdi:bed-empty
-                  color: rgb(207,207,207)
-                  action: service
-                  service:
-                    domain: homeassistant
-                    action: turn_off
-                    data:
-                      entity_id: group.bedroom_lights
+          - type: section
+            label: Office
+          - entity: light.office_dome_left
+            name: Dome Left
+          - entity: light.office_dome_right
+            name: Dome Right
+          - entity: light.office_lamp_top
+            name: Lamp Top
+          - entity: light.office_lamp_bottom
+            name: Lamp Bottom
 
-          # Scenes
-          - type: horizontal-stack
-            cards:
-              - type: "custom:button-card"
-                name: Normal
-                action: service
-                service:
-                  domain: scene
-                  action: turn_on
-                  data:
-                    entity_id: scene.normal
-              - type: "custom:button-card"
-                name: Urban Temple
-                action: service
-                service:
-                  domain: scene
-                  action: turn_on
-                  data:
-                    entity_id: scene.urban_temple
-
-          # Lights list
-          - type: entities
-            title: Lights
-            entities:
-              - type: section
-                label: Kitchen
-              - entity: light.kitchen
-              - entity: light.kitchen_left_front
-                name: Left Front
-              - entity: light.kitchen_right_front
-                name: Right Front
-              - entity: light.kitchen_rear
-                name: Rear
-              - entity: light.entry
-                name: Entry
-
-              - type: section
-                label: Living Room
-              - entity: light.living_room
-              - entity: light.living_room_hanging
-                name: Hanging
-              - entity: light.living_room_dome_left
-                name: Dome Left
-              - entity: light.living_room_dome_right
-                name: Dome Right
-              - entity: light.hallway
-                name: Hallway
-
-              - type: section
-                label: Accent
-              - light.nanoleaf
-              - entity: light.living_room_bloom
-                name: Bloom
-              - entity: light.living_room_tv
-                name: TV
-
-              - type: section
-                label: Office
-              - entity: light.office
-              - entity: light.office_dome_left
-                name: Dome Left
-              - entity: light.office_dome_right
-                name: Dome Right
-              - entity: light.office_lamp_top
-                name: Lamp Top
-              - entity: light.office_lamp_bottom
-                name: Lamp Bottom
-
-              - type: section
-                label: Bedroom
-              - entity: light.bedroom
-              - entity: light.bedroom_light_1
-                name: Dome 1
-              - entity: light.bedroom_light_2
-                name: Dome 2
+          - type: section
+            label: Bedroom
+          - entity: light.bedroom_light_1
+            name: Dome 1
+          - entity: light.bedroom_light_2
+            name: Dome 2
 
   # Media View
   - title: Media
@@ -347,12 +246,12 @@ views:
         entity: media_player.living_room_roku
         name: Roku
         tv: true
-        power: 
+        power:
           service: remote.turn_on
           service_data:
             entity_id: remote.living_room
             activity: Watch Roku
-    
+
       - type: "custom:mini-media-player"
         entity: media_player.bedroom_chromecast
 
@@ -362,7 +261,7 @@ views:
     theme: darkcyan
     cards:
       - type: picture-glance
-        entities: 
+        entities:
           - switch.living_room_camera
         title: Living Room
         camera_image: camera.living_room

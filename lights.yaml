@@ -8,7 +8,7 @@
     - light.kitchen_left_front
     - light.kitchen_right_front
     - light.kitchen_rear
-    - light.entry    
+    - light.entry
     - light.living_room_hanging
     - light.living_room_dome_left
     - light.living_room_dome_right
@@ -31,7 +31,7 @@
     - light.hallway
 
 - platform: group
-  name: Office Lights 
+  name: Office Lights
   entities:
     - light.office_dome_left
     - light.office_dome_right
@@ -45,8 +45,8 @@
     - light.bedroom_light_2
 
 - platform: group
-  name: Accent Lights 
+  name: Accent Lights
   entities:
-    - light.aurora
+    - light.nanoleaf
     - light.living_room_tv_lightstrip
     - light.living_room_bloom
