@@ -95,8 +95,13 @@ views:
     icon: mdi:lightbulb-on
     theme: darkcyan
     cards:
-      - type: light
-        entity: light.all_lights
+      - type: horizontal-stack
+        cards:
+          - type: light
+            entity: light.all_lights
+          - type: light
+            name: Main Lights
+            entity: light.main
       - type: glance
         title: Rooms
         entities:
@@ -155,14 +160,14 @@ views:
             entity: light.kitchen
           - type: light
             entity: light.living_room
-      - type: light
-        entity: light.accent_lights
       - type: horizontal-stack
         cards:
           - type: light
             entity: light.office
           - type: light
             entity: light.bedroom
+      - type: light
+        entity: light.accent_lights
 
       # Lights list
       - type: entities
