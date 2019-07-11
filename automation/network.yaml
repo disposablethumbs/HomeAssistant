@@ -1,10 +1,9 @@
 - alias: Restart modem
-  initial_state: 'on'
   hide_entity: true
   trigger:
     - platform: state
       entity_id: binary_sensor.network
-      to: 'off'
+      to: "off"
   action:
     - service: notify.ios_the_ijarvis
       data:

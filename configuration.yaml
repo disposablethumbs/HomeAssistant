@@ -15,7 +15,7 @@ homeassistant:
       allow_bypass_login: true
     - type: legacy_api_password
       api_password: !secret api_pass
-  
+
   customize: !include customize.yaml
 
 frontend:
@@ -32,7 +32,7 @@ http:
   ssl_key: /ssl/privkey.pem
   login_attempts_threshold: 5
 
-hassio: 
+hassio:
 
 custom_updater:
   card_urls:
@@ -81,7 +81,6 @@ google_assistant:
         - FRONT_DOOR
 
 device_tracker: !include device_trackers.yaml
-owntracks:
 
 updater:
 discovery:
@@ -139,9 +138,9 @@ media_player: !include media_players.yaml
 # Chromecast
 cast:
   media_player:
-  - host: !secret ip_googlecast_bedroom 
+    - host: !secret ip_googlecast_bedroom
 
-# Thermostat 
+# Thermostat
 nest:
   client_id: !secret nest_id
   client_secret: !secret nest_secret
@@ -152,7 +151,7 @@ remote:
     name: Living Room
     host: !secret ip_harmony_livingroom
   - platform: harmony
-    name: Office 
+    name: Office
     host: !secret ip_harmony_office
 
 roku:
