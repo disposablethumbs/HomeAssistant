@@ -1,5 +1,5 @@
 all_lights_simple:
-  name: All Lights 
+  name: All Lights
   entities:
     - switch.kitchen_light_switch
     - light.entry
@@ -15,36 +15,36 @@ all_lights_simple:
     - switch.bedroom_light_switch
 
 kitchen_lights:
-  name: Kitchen Lights 
+  name: Kitchen Lights
   entities:
     - switch.kitchen_light_switch
     - light.kitchen
 living_room_lights:
-  name: Living Room Lights 
+  name: Living Room Lights
   entities:
     - switch.living_room_chandelier
     - switch.living_room_dome
     - light.living_room
 office_lights:
-  name: Office Lights 
+  name: Office Lights
   entities:
     - switch.office_light_switch
-    - light.office 
+    - light.office
 bedroom_lights:
   name: Bedroom
-  entities: 
+  entities:
     - switch.bedroom_light_switch
     - light.bedroom
 
 accent_lights:
-  name: Accent Lights 
+  name: Accent Lights
   entities:
-    - light.aurora
+    - light.nanoleaf
     - light.living_room_tv_lightstrip
     - light.living_room_bloom
 
 light_switches:
-  name: Light Switches 
+  name: Light Switches
   entities:
     - switch.kitchen_light_switch
     - switch.living_room_chandelier

@@ -137,6 +137,7 @@ views:
               service: homeassistant.toggle
               service_data:
                 entity_id: group.bedroom_lights
+      # Scenes
       - type: glance
         title: Scenes
         entities:
@@ -147,6 +148,13 @@ views:
               service: scene.turn_on
               service_data:
                 entity_id: scene.normal
+          - entity: scene.purple_chill
+            name: Purple Chill
+            tap_action:
+              action: call-service
+              service: scene.turn_on
+              service_data:
+                entity_id: scene.purple_chill
           - entity: scene.urban_temple
             name: Urban Temple
             tap_action:
