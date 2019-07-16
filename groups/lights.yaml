@@ -6,7 +6,7 @@ all_lights_simple:
     - switch.living_room_chandelier
     - switch.living_room_dome
     - light.hallway
-    - light.aurora
+    - light.nanoleaf
     - light.living_room_tv_lightstrip
     - light.living_room_bloom
     - switch.office_light_switch

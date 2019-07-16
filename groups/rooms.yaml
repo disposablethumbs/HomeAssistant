@@ -18,7 +18,7 @@ room_living_room:
     - light.living_room_dome_left
     - light.living_room_dome_right
     - light.hallway
-    - light.aurora
+    - light.nanoleaf
     - input_select.living_room_hub
     - script.receiver_vol_up
     - script.receiver_vol_down
@@ -29,7 +29,7 @@ room_living_room:
     - switch.space_heater_switch
     - script.heater_power
     - script.heater_mode
-    
+
 room_office:
   name: Office
   control: hidden

@@ -1,0 +1,8 @@
+leaving_home:
+  alias: Leaving Home
+  sequence:
+    - service: homeassistant.turn_on
+      entity_id:
+        - switch.frontdoor
+    - service: automation.trigger
+      entity_id: automation.away

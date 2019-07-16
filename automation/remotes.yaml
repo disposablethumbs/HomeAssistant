@@ -24,7 +24,8 @@
     entity_id: input_select.living_room_hub
     to: PowerOff
   action:
-    - service: script.harmony_turn_off
+    - service: remote.turn_off
+      entity_id: remote.living_room
 
 - alias: Start - Update Harmony status
   hide_entity: true
@@ -38,4 +39,4 @@
     data_template:
       entity_id: input_select.living_room_hub
       option: >
-        {{ states.remote.living_room.attributes.current_activity }}
+        {{ state_attr('remote.living_room','current_activity') }}

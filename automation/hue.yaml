@@ -1,48 +1,44 @@
-- alias: " Entrance dimmer ON"
+- alias: "Entrance Dimmer ON"
   hide_entity: true
-  trigger: 
+  trigger:
     - platform: state
       entity_id: sensor.entrance_dimmer_switch
-      to: '1_click'
+      to: "1_click"
     - platform: state
       entity_id: sensor.entrance_dimmer_switch
-      to: '1_click_up'
+      to: "1_click_up"
   action:
-    - service: switch.turn_on
+    - service: homeassistant.turn_on
       entity_id:
         - switch.kitchen_light_switch
         - switch.living_room_chandelier
         - switch.living_room_dome
 
-- alias: "Entrance dimmer OFF"
+- alias: "Entrance Dimmer OFF"
   hide_entity: true
   trigger:
     - platform: state
       entity_id: sensor.entrance_dimmer_switch
-      to: '4_click'
+      to: "4_click"
     - platform: state
       entity_id: sensor.entrance_dimmer_switch
-      to: '4_click_up'
+      to: "4_click_up"
   action:
-    - service: script.harmony_turn_off
-    - service: light.turn_off
-      entity_id: 
-        - light.aurora
-        - light.bedroom_light_1
-        - light.bedroom_light_2
-    - service: switch.turn_off
-      entity_id: 
+    - service: homeassistant.turn_off
+      entity_id:
+        - group.all_lights_simple
+        - remote.living_room
         - switch.space_heater_switch
 
-- alias: "Office dimmer ON"
+- alias: "Office Dimmer ON"
   hide_entity: true
-  trigger: 
+  trigger:
     - platform: state
       entity_id: sensor.office_dimmer_switch
-      to: '1_click'
+      to: "1_click"
     - platform: state
       entity_id: sensor.office_dimmer_switch
-      to: '1_click_up'
+      to: "1_click_up"
   action:
     - service: switch.turn_on
       entity_id:
