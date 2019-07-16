@@ -90,6 +90,8 @@ logbook:
 map:
 sun:
 
+python_script:
+
 system_health:
 
 weather:
