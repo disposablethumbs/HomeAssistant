@@ -33,13 +33,6 @@ http:
   login_attempts_threshold: 5
 
 hassio:
-
-custom_updater:
-  card_urls:
-    - https://raw.githubusercontent.com/kalkih/mini-media-player/master/tracker.json
-  component_urls:
-    - https://raw.githubusercontent.com/robmarkcole/Hue-sensors-HASS/master/custom_updater.json
-
 mqtt:
   broker: !secret ip_piserver
   port: 1883
@@ -55,8 +48,8 @@ recorder:
       - weblink
       - updater
     entities:
-      - sun.sun # Don't record sun data
-      - sensor.last_boot # Comes from 'systemmonitor' sensor platform
+      - sun.sun
+      - sensor.last_boot
       - sensor.date
 
 snips:
@@ -67,7 +60,7 @@ homekit:
     include_domains:
       - switch
   entity_config:
-    switch.frontdoor:
+    switch.front_door:
       name: Front Door
 
 google_assistant:
@@ -75,7 +68,7 @@ google_assistant:
   exposed_domains:
     - switch
   entity_config:
-    switch.frontdoor:
+    switch.front_door:
       name: DOOR
       aliases:
         - FRONT_DOOR
@@ -117,12 +110,6 @@ speedtestdotnet:
     - download
     - upload
 
-xiaomi_aqara:
-  discovery_retry: 15
-  gateways:
-    - mac: !secret aqara_gateway_mac
-      key: !secret aqara_gateway_key
-
 # Lights
 hue:
   bridges:
@@ -136,11 +123,6 @@ scene: !include scenes.yaml
 
 # Media player
 media_player: !include media_players.yaml
-
-# Chromecast
-cast:
-  media_player:
-    - host: !secret ip_googlecast_bedroom
 
 # Thermostat
 nest:
@@ -162,8 +144,6 @@ roku:
 # Switches
 switch: !include switch.yaml
 tplink:
-  switch:
-    - host: !secret ip_switch_spaceheater
 
 tuya:
   username: !secret email
@@ -173,7 +153,6 @@ tuya:
 # Wemo
 wemo:
   static:
-    - !secret ip_sonoff_frontdoor
     - !secret ip_kitchen_lightswitch
     - !secret ip_livingroom_chandelier
     - !secret ip_livingroom_dome

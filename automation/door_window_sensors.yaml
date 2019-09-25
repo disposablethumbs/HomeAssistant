@@ -27,10 +27,10 @@
     entity_id: binary_sensor.balcony_door_sensor
     to: "on"
   action:
-    service: climate.set_operation_mode
+    service: climate.set_hvac_mode
     data:
       entity_id: climate.apartment_thermostat
-      operation_mode: "off"
+      hvac_mode: "off"
 
 - alias: Balcony Door Closed
   trigger:
@@ -38,10 +38,10 @@
     entity_id: binary_sensor.balcony_door_sensor
     to: "off"
   action:
-    service: climate.set_operation_mode
+    service: climate.set_hvac_mode
     data_template:
       entity_id: climate.apartment_thermostat
-      operation_mode: >
+      hvac_mode: >
         {% if states('sensor.compare_temp_current_target') | float > 1 %}
           cool
         {% elif states('sensor.compare_temp_current_target') | float < 1 %}

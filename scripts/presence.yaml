@@ -3,6 +3,6 @@ leaving_home:
   sequence:
     - service: homeassistant.turn_on
       entity_id:
-        - switch.frontdoor
+        - switch.front_door
     - service: automation.trigger
       entity_id: automation.away

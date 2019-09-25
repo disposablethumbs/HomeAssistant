@@ -13,3 +13,17 @@
         - group.all_lights_simple
         - remote.living_room
         - switch.space_heater_switch
+    - service: homeassistant.turn_on
+      entity_id:
+        - camera.living_room
+
+- alias: Home
+  hide_entity: true
+  trigger:
+    platform: state
+    entity_id: binary_sensor.anthony_home
+    from: "off"
+    to: "on"
+  action:
+    - service: camera.turn_off
+      entity_id: camera.living_room

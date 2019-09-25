@@ -1,8 +1,6 @@
 title: Apartment
 
 resources:
-  - url: /customcards/github/custom-cards/tracker-card.js?track=true
-    type: module
   - url: /customcards/github/custom-cards/button-card.js?track=true
     type: module
   - url: /local/mini-media-player-bundle.js?v=1.1.3
@@ -56,7 +54,7 @@ views:
               action: call-service
               service: switch.turn_on
               service_data:
-                entity_id: switch.frontdoor
+                entity_id: switch.front_door
 
       # Space Heater
       - type: conditional
@@ -319,7 +317,6 @@ views:
   - title: Settings
     icon: mdi:settings
     cards:
-      - type: custom:tracker-card
       - type: entities
         title: Automations
         show_header_toggle: false

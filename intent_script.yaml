@@ -6,7 +6,7 @@ OpenDoor:
   action:
     - service: switch.turn_on
       data:
-        entity_id: switch.frontdoor
+        entity_id: switch.front_door
     - service: snips.say
       data:
         text: Okay, opening the door

@@ -7,7 +7,7 @@ room_kitchen:
     - light.kitchen_right_front
     - light.kitchen_rear
     - light.entry
-    - switch.frontdoor
+    - switch.front_door
 room_living_room:
   name: Living Room
   control: hidden
