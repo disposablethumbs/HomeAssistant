@@ -15,6 +15,7 @@
           {% elif is_state("input_select.living_room_hub", "Listen to Music") %}
             Listen to Music
           {% else %}
+            PowerOff
           {% endif %}
 
 - alias: Harmony Off
