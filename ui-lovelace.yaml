@@ -56,6 +56,11 @@ views:
               service_data:
                 entity_id: switch.front_door
 
+      # Thermostat
+      - type: thermostat
+        entity: climate.apartment_thermostat
+        name: Apartment
+
       # Space Heater
       - type: conditional
         conditions:
@@ -66,10 +71,12 @@ views:
           cards:
             - type: entity-button
               entity: switch.space_heater_switch
+              icon: mdi:power-socket-us
               tap_action:
                 action: toggle
             - type: entity-button
               entity: script.heater_power
+              icon: mdi:power
               tap_action:
                 action: call-service
                 service: script.turn_on
@@ -77,16 +84,12 @@ views:
                   entity_id: script.heater_power
             - type: entity-button
               entity: script.heater_mode
+              icon: mdi:power-settings
               tap_action:
                 action: call-service
                 service: script.turn_on
                 service_data:
                   entity_id: script.heater_mode
-
-      # Thermostat
-      - type: thermostat
-        entity: climate.apartment_thermostat
-        name: Apartment
 
   # Lights View
   - title: Lights
@@ -321,5 +324,6 @@ views:
         title: Automations
         show_header_toggle: false
         entities:
+          - entity: input_boolean.guests
           - entity: automation.front_door_open
             name: Front Door - Lights

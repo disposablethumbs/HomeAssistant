@@ -27,3 +27,25 @@
   action:
     - service: camera.turn_off
       entity_id: camera.living_room
+
+- alias: Guest Mode On
+  trigger:
+    platform: state
+    entity_id: input_boolean.guests
+    to: "on"
+  action:
+    - service: automation.turn_off
+      entity_id:
+        - automation.front_door_open
+        - automation.away
+
+- alias: Guest Mode Off
+  trigger:
+    platform: state
+    entity_id: input_boolean.guests
+    to: "off"
+  action:
+    - service: automation.turn_on
+      entity_id:
+        - automation.front_door_open
+        - automation.away

@@ -11,7 +11,6 @@ homeassistant:
       trusted_networks:
         - 192.168.1.0/24
         - 127.0.0.1
-        - ::1
       allow_bypass_login: true
     - type: legacy_api_password
       api_password: !secret api_pass
@@ -66,12 +65,8 @@ homekit:
 google_assistant:
   project_id: !secret ga_id
   exposed_domains:
-    - switch
-  entity_config:
-    switch.front_door:
-      name: DOOR
-      aliases:
-        - FRONT_DOOR
+    - scene
+    - input_boolean
 
 device_tracker: !include device_trackers.yaml
 
@@ -165,5 +160,6 @@ automation: !include_dir_merge_list automation/
 binary_sensor: !include binary_sensors.yaml
 group: !include_dir_merge_named groups/
 input_select: !include input_select.yaml
+input_boolean: !include input_boolean.yaml
 script: !include_dir_merge_named scripts/
 sensor: !include sensors.yaml

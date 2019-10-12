@@ -18,6 +18,7 @@
           mdi:camera-off
         {% endif %}
 
+# Front Door
 - platform: mqtt
   name: Front Door
   state_topic: "sonoff/stat/RESULT"
