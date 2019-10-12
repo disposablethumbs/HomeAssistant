@@ -19,15 +19,15 @@
     switch.living_room_dome: on
     light.living_room:
       state: on
-      brightness: 70
+      brightness: 150
       rgb_color: [255, 127, 25]
     light.living_room_tv_lightstrip:
       state: on
-      brightness: 100
+      brightness: 210
       rgb_color: [255, 57, 196]
     light.living_room_bloom:
       state: on
-      brightness: 100
+      brightness: 210
       rgb_color: [255, 57, 196]
     light.nanoleaf:
       state: on
@@ -46,11 +46,11 @@
       rgb_color: [131, 78, 255]
     light.living_room_tv_lightstrip:
       state: on
-      brightness: 100
+      brightness: 230
       rgb_color: [237, 80, 255]
     light.living_room_bloom:
       state: on
-      brightness: 100
+      brightness: 210
       rgb_color: [255, 76, 249]
     light.nanoleaf:
       state: on
