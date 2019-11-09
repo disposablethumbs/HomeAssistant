@@ -11,11 +11,5 @@
       entity_id: sun.sun
       to: below_horizon
   action:
-    - service_template: frontend.set_theme
-      data_template:
-        name: >
-          {% if states.sun.sun.state == "above_horizon" %}
-            default
-          {% else %}
-            darkcyan
-          {% endif %}
+    - service: frontend.set_theme
+      name: darkcyan
