@@ -14,7 +14,7 @@
             Watch Roku
           {% elif is_state("input_select.living_room_hub", "Listen to Music") %}
             Listen to Music
-          {% else %}
+          {% elif is_state("input_select.living_room_hub", "Power Off") %}
             PowerOff
           {% endif %}
 
@@ -23,12 +23,12 @@
   trigger:
     platform: state
     entity_id: input_select.living_room_hub
-    to: PowerOff
+    to: Power Off
   action:
     - service: remote.turn_off
       entity_id: remote.living_room
 
-- alias: Start - Update Harmony status
+- alias: "Start - Update Harmony status"
   hide_entity: true
   trigger:
     - platform: state
@@ -40,4 +40,8 @@
     data_template:
       entity_id: input_select.living_room_hub
       option: >
-        {{ state_attr('remote.living_room','current_activity') }}
+        {% if is_state_attr('remote.living_room','current_activity','PowerOff') %}
+          Power Off
+        {% else %}
+          {{ state_attr('remote.living_room','current_activity') }}
+        {% endif %}

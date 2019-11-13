@@ -3,7 +3,7 @@ title: Apartment
 resources:
   - url: /customcards/github/custom-cards/button-card.js?track=true
     type: module
-  - url: /local/mini-media-player-bundle.js?v=1.1.3
+  - url: /local/mini-media-player-bundle.js?v=1.4.2
     type: module
   - url: /local/roku-card.js?v=0
     type: module
@@ -236,9 +236,18 @@ views:
     icon: mdi:play-circle
     theme: darkcyan
     cards:
-      - type: "custom:mini-media-player"
+      - type: custom:mini-media-player
         entity: media_player.spotify
-      - type: "custom:mini-media-player"
+      - type: custom:mini-media-player
+        entity: media_player.living_room_mini
+        icon: mdi:google-home
+      - type: custom:mini-media-player
+        entity: media_player.emby_chrome
+        icon: mdi:emby
+      - type: custom:mini-media-player
+        entity: media_player.bedroom_speaker
+        icon: mdi:google-home
+      - type: custom:mini-media-player
         entity: media_player.bedroom_chromecast
 
       - type: entities
@@ -246,16 +255,36 @@ views:
           - entity: switch.bedroom_tv
             icon: mdi:television
 
+      # Harmony
       - type: entities
         title: Harmony
         show_header_toggle: false
         entities:
           - input_select.living_room_hub
-          - script.receiver_vol_up
-          - script.receiver_vol_down
+          - type: call-service
+            name: Volume Up
+            icon: mdi:volume-high
+            action_name: VOL +
+            service: script.turn_on
+            service_data:
+              entity_id: script.receiver_vol_up
+          - type: call-service
+            name: Volume Down
+            icon: mdi:volume-medium
+            action_name: VOL -
+            service: script.turn_on
+            service_data:
+              entity_id: script.receiver_vol_down
           - switch.pc_outlet
-          - script.pc_power
+          - type: call-service
+            name: PC Power
+            icon: mdi:power
+            action_name: TOGGLE
+            service: script.turn_on
+            service_data:
+              entity_id: script.pc_power
 
+      # Roku
       - type: "custom:roku-card"
         entity: media_player.living_room_roku
         name: Roku

@@ -16,7 +16,7 @@
   sensors:
     current_activity:
       friendly_name: "Current Activity"
-      value_template: "{{ states.remote.living_room.attributes.current_activity }}"
+      value_template: "{{ state_attr('remote.living_room','current_activity') }}"
     compare_temp_indoor_outdoor:
       friendly_name: "Temperature Difference Indoor-Outdoor"
       value_template: >

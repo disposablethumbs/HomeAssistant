@@ -2,7 +2,7 @@ living_room_hub:
   name: Harmony Control
   icon: mdi:monitor
   options:
-    - PowerOff
+    - Power Off
     - Watch PC
     - Watch Roku
     - Listen to Music
