@@ -307,7 +307,7 @@ views:
         camera_image: camera.living_room
         camera_view: live
 
-  # Status View
+  # Network View
   - title: Network
     icon: mdi:server-network
     theme: darkcyan
@@ -331,6 +331,11 @@ views:
       - type: glance
         title: Network Status
         entities:
+          - entity: switch.modem
+            icon: mdi:network-router
+            tap_action:
+              action: toggle
+              confirmation: true
           - entity: binary_sensor.network
             hold_action:
               action: call-service
@@ -338,8 +343,6 @@ views:
               service_data:
                 entity_id: automation.restart_modem
           - entity: binary_sensor.google_home
-          - entity: sensor.speedtest_ping
-            name: Ping
           - entity: sensor.speedtest_upload
             name: Upload
           - entity: sensor.speedtest_download
