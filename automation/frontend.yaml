@@ -1,15 +1,8 @@
-  
-- alias: Automatic Theme Change
-  initial_state: 'on'
+- alias: Set Theme On Start
   trigger:
     - platform: homeassistant
       event: start
-    - platform: state
-      entity_id: sun.sun
-      to: above_horizon
-    - platform: state
-      entity_id: sun.sun
-      to: below_horizon
   action:
     - service: frontend.set_theme
-      name: darkcyan
+      data:
+        name: darkcyan
