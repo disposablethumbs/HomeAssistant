@@ -1,21 +1,24 @@
 # Determine if home
-- platform: 'bayesian'
-  prior: 0.75
-  name: 'Anthony Home'
-  probability_threshold: 0.9
+- platform: "bayesian"
+  prior: 0.7
+  name: "Anthony Home"
+  probability_threshold: 0.8
   observations:
-      # Network
-    - entity_id: 'device_tracker.iphone_ping'
-      prob_given_true: 0.8
-      prob_given_false: 0.2
-      platform: 'state'
-      to_state: 'home'
-      # iPhone Bluetooth
-    - entity_id: 'device_tracker.the_ijarvis'
+    # Person
+    - entity_id: person.anthony
+      prob_given_true: 0.95
+      platform: "state"
+      to_state: "home"
+    # Network
+    - entity_id: "device_tracker.iphone_ping"
+      prob_given_true: 0.7
+      platform: "state"
+      to_state: "home"
+    # iPhone Bluetooth
+    - entity_id: "device_tracker.ijarvis"
       prob_given_true: 0.9
-      prob_given_false: 0.1
-      platform: 'state'
-      to_state: 'home'
+      platform: "state"
+      to_state: "home"
 
 # Check network connectivity
 - platform: ping
@@ -43,14 +46,14 @@
         {{ is_state('light.kitchen_left_front', 'on') 
            and is_state('light.kitchen_right_front', 'on') 
            and is_state('light.kitchen_rear', 'on') 
-           and is_state('light.entry', 'on') }} 
+           and is_state('light.entry', 'on') }}
     living_room_lights:
       friendly_name: "Living Room Lights All"
       value_template: >-
         {{ is_state('light.living_room_hanging', 'on') 
            and is_state('light.living_room_dome_left', 'on') 
            and is_state('light.living_room_dome_right', 'on') 
-           and is_state('light.hallway', 'on') }} 
+           and is_state('light.hallway', 'on') }}
     office_lights:
       friendly_name: "Office Lights All"
       value_template: >-
@@ -63,9 +66,9 @@
       value_template: >-
         {{ is_state('light.bedroom_light_1', 'on') 
            and is_state('light.bedroom_light_2', 'on') }}
-    
+
     space_heater_connected:
-      friendly_name: 'Space Heater Connected'
+      friendly_name: "Space Heater Connected"
       value_template: >-
         {{ is_state("switch.space_heater_switch", "on") 
           or is_state("switch.space_heater_switch", "off") }}

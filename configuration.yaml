@@ -67,6 +67,7 @@ google_assistant:
     - input_boolean
 
 device_tracker: !include device_trackers.yaml
+person:
 
 updater:
 discovery:

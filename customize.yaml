@@ -1,3 +1,6 @@
+person.anthony:
+  entity_picture: "/local/img/anthony.png"
+
 group.all_switches:
   hidden: true
 

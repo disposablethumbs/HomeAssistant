@@ -96,9 +96,9 @@ views:
     icon: mdi:account
     theme: darkcyan
     cards:
-      - type: entity-button
-        entity: binary_sensor.anthony_home
-        icon: mdi:home-account
+      - type: entities
+        entities:
+          - person.anthony
       - type: map
         entities:
           - device_tracker.ijarvis

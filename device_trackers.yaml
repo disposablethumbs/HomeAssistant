@@ -1,5 +1,5 @@
 - platform: ping
-  consider_home: 30
+  consider_home: 180
   hosts:
     iphone_ping: !secret ip_iphone
 
