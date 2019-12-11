@@ -15,7 +15,7 @@
       platform: "state"
       to_state: "home"
     # iPhone Bluetooth
-    - entity_id: "device_tracker.ijarvis"
+    - entity_id: "device_tracker.the_ijarvis"
       prob_given_true: 0.9
       platform: "state"
       to_state: "home"

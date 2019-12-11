@@ -1,7 +1,9 @@
 - platform: ping
-  consider_home: 180
   hosts:
     iphone_ping: !secret ip_iphone
+  consider_home: 300
+  new_device_defaults:
+    track_new_devices: false
+    hide_if_away: false
 
 - platform: bluetooth_tracker
-  interval_seconds: 30
