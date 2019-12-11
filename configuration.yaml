@@ -16,12 +16,12 @@ homeassistant:
 
   customize: !include customize.yaml
 
+default_config:
+
 frontend:
   themes: !include_dir_merge_named themes/
 lovelace:
   mode: yaml
-
-config:
 
 http:
   base_url: !secret ddns_url
@@ -30,6 +30,7 @@ http:
   login_attempts_threshold: 5
 
 hassio:
+
 mqtt:
   broker: !secret ip_piserver
   port: 1883
@@ -49,37 +50,9 @@ recorder:
       - sensor.last_boot
       - sensor.date
 
-snips:
-intent_script: !include intent_script.yaml
-
-homekit:
-  filter:
-    include_domains:
-      - switch
-  entity_config:
-    switch.front_door:
-      name: Front Door
-
-google_assistant:
-  project_id: !secret ga_id
-  exposed_domains:
-    - scene
-    - input_boolean
-
 device_tracker: !include device_trackers.yaml
-person:
 
-updater:
 discovery:
-conversation:
-history:
-logbook:
-map:
-sun:
-
-python_script:
-
-system_health:
 
 weather:
   - platform: darksky
@@ -89,7 +62,15 @@ weather:
 tts:
   - platform: google_translate
     service_name: google_say
-cloud:
+
+automation: !include_dir_merge_list automation/
+binary_sensor: !include binary_sensors.yaml
+group: !include_dir_merge_named groups/
+input_select: !include input_select.yaml
+input_boolean: !include input_boolean.yaml
+python_script:
+script: !include_dir_merge_named scripts/
+sensor: !include sensors.yaml
 
 ios:
 
@@ -154,11 +135,3 @@ wemo:
     - !secret ip_bedroom_lightswitch
     - !secret ip_pc_outlet
     - !secret ip_modem
-
-automation: !include_dir_merge_list automation/
-binary_sensor: !include binary_sensors.yaml
-group: !include_dir_merge_named groups/
-input_select: !include input_select.yaml
-input_boolean: !include input_boolean.yaml
-script: !include_dir_merge_named scripts/
-sensor: !include sensors.yaml

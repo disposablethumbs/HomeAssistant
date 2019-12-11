@@ -64,7 +64,7 @@ views:
       # Space Heater
       - type: conditional
         conditions:
-          - entity: binary_sensor.space_heater_connected
+          - entity: input_boolean.winter
             state: "on"
         card:
           type: horizontal-stack
@@ -101,7 +101,7 @@ views:
           - person.anthony
       - type: map
         entities:
-          - device_tracker.ijarvis
+          - device_tracker.the_ijarvis
           - zone.home
         default_zoom: 18
 
@@ -373,3 +373,4 @@ views:
           - entity: input_boolean.guests
           - entity: automation.front_door_open
             name: Front Door - Lights
+          - entity: input_boolean.winter
