@@ -1,0 +1,11 @@
+- alias: Front Door Button
+  trigger:
+    platform: event
+    event_type: xiaomi_aqara.click
+    event_data:
+      entity_id: binary_sensor.front_door_button
+      click_type: single
+  action:
+    service: switch.turn_on
+    data:
+      entity_id: switch.front_door
