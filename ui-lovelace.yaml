@@ -101,8 +101,8 @@ views:
           - person.anthony
       - type: map
         entities:
-          - device_tracker.the_ijarvis
           - zone.home
+          - device_tracker.pixel_4
         default_zoom: 18
 
   # Lights View

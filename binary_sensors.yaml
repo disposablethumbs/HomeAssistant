@@ -1,24 +1,24 @@
-# Determine if home
-- platform: "bayesian"
-  prior: 0.7
-  name: "Anthony Home"
-  probability_threshold: 0.8
-  observations:
-    # Person
-    - entity_id: person.anthony
-      prob_given_true: 0.95
-      platform: "state"
-      to_state: "home"
-    # Network
-    - entity_id: "device_tracker.iphone_ping"
-      prob_given_true: 0.7
-      platform: "state"
-      to_state: "home"
-    # iPhone Bluetooth
-    - entity_id: "device_tracker.the_ijarvis"
-      prob_given_true: 0.9
-      platform: "state"
-      to_state: "home"
+# # Determine if home
+# - platform: "bayesian"
+#   prior: 0.7
+#   name: "Anthony Home"
+#   probability_threshold: 0.8
+#   observations:
+#     # Person
+#     - entity_id: person.anthony
+#       prob_given_true: 0.95
+#       platform: "state"
+#   to_state: "home"
+# # Network
+# - entity_id: "device_tracker.iphone_ping"
+#   prob_given_true: 0.7
+#   platform: "state"
+#   to_state: "home"
+# # iPhone Bluetooth
+# - entity_id: "device_tracker.the_ijarvis"
+#   prob_given_true: 0.9
+#   platform: "state"
+#   to_state: "home"
 
 # Check network connectivity
 - platform: ping

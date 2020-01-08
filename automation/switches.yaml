@@ -9,3 +9,15 @@
     service: switch.turn_on
     data:
       entity_id: switch.front_door
+
+- alias: Front Door Button - Long Press
+  trigger:
+    platform: event
+    event_type: xiaomi_aqara.click
+    event_data:
+      entity_id: binary_sensor.front_door_button
+      click_type: long_click_press
+  action:
+    service: switch.turn_on
+    data:
+      entity_id: switch.front_door

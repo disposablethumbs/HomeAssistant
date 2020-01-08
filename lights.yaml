@@ -47,11 +47,6 @@
     - light.living_room_tv_lightstrip
     - light.living_room_bloom
 
-- platform: flux_led
-  devices:
-    192.168.1.210:
-      name: Christmas Tree
-
 - platform: nanoleaf
   host: !secret ip_nanoleaf
   token: !secret nanoleaf_token

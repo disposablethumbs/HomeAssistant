@@ -29,8 +29,6 @@ http:
   ssl_key: /ssl/privkey.pem
   login_attempts_threshold: 5
 
-hassio:
-
 mqtt:
   broker: !secret ip_piserver
   port: 1883
@@ -50,59 +48,36 @@ recorder:
       - sensor.last_boot
       - sensor.date
 
-device_tracker: !include device_trackers.yaml
-
-discovery:
-
 weather:
   - platform: darksky
     api_key: !secret dark_sky_key
     mode: daily
 
+# Text to speech
 tts:
   - platform: google_translate
-    service_name: google_say
-
-automation: !include_dir_merge_list automation/
-binary_sensor: !include binary_sensors.yaml
-group: !include_dir_merge_named groups/
-input_select: !include input_select.yaml
-input_boolean: !include input_boolean.yaml
-python_script:
-script: !include_dir_merge_named scripts/
-sensor: !include sensors.yaml
-
-ios:
 
 ifttt:
   key: !secret ifttt_key
 
-speedtestdotnet:
-  scan_interval:
-    minutes: 30
-  monitored_conditions:
-    - ping
-    - download
-    - upload
+device_tracker: !include device_trackers.yaml
 
-# Lights
-hue:
-  bridges:
-    - host: !secret ip_hue_bridge
-      allow_unreachable: true
-      allow_hue_groups: true
-
-light: !include lights.yaml
-
-scene: !include scenes.yaml
-
-# Media player
-media_player: !include media_players.yaml
+xiaomi_aqara:
+  discovery_retry: 5
+  gateways:
+    - key: !secret aqara_gateway_key
 
 # Thermostat
 nest:
   client_id: !secret nest_id
   client_secret: !secret nest_secret
+
+# Lights
+light: !include lights.yaml
+scene: !include scenes.yaml
+
+# Media player
+media_player: !include media_players.yaml
 
 # Harmony
 remote:
@@ -123,15 +98,13 @@ tplink:
 tuya:
   username: !secret email
   password: !secret tuya_password
-  country_code: 1
+  country_code: "1"
 
-# Wemo
-wemo:
-  static:
-    - !secret ip_kitchen_lightswitch
-    - !secret ip_livingroom_chandelier
-    - !secret ip_livingroom_dome
-    - !secret ip_office_lightswitch
-    - !secret ip_bedroom_lightswitch
-    - !secret ip_pc_outlet
-    - !secret ip_modem
+automation: !include_dir_merge_list automation/
+binary_sensor: !include binary_sensors.yaml
+group: !include_dir_merge_named groups/
+input_select: !include input_select.yaml
+input_boolean: !include input_boolean.yaml
+script: !include_dir_merge_named scripts/
+python_script:
+sensor: !include sensors.yaml

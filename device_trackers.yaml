@@ -1,9 +1,7 @@
 - platform: ping
   hosts:
-    iphone_ping: !secret ip_iphone
+    phone_ping: !secret ip_phone
   consider_home: 300
   new_device_defaults:
-    track_new_devices: false
+    track_new_devices: true
     hide_if_away: false
-
-- platform: bluetooth_tracker

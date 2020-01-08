@@ -17,7 +17,6 @@ from homeassistant.helpers.event import async_track_time_interval
 
 DEPENDENCIES = ["hue"]
 
-__version__ = "1.4"
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -172,7 +171,7 @@ class HueSensorData(object):
         new_sensors = data.keys() - self.data.keys()
         updated_sensors = []
         for key, new in data.items():
-            new['changed'] = True
+            new["changed"] = True
             old = self.data.get(key)
             if not old or old == new:
                 continue
@@ -181,7 +180,7 @@ class HueSensorData(object):
                 old["last_updated"] == new["last_updated"]
                 and old["state"] == new["state"]
             ):
-                new['changed'] = False
+                new["changed"] = False
         self.data.update(data)
 
         new_entities = {
@@ -232,6 +231,11 @@ class HueSensor(BinarySensorDevice):
         data = self._data.get(self._hue_id)
         if data:
             return data["name"]
+
+    @property
+    def unique_id(self):
+        """Return the ID of this Hue sensor."""
+        return self._hue_id
 
     @property
     def is_on(self):
