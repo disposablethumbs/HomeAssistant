@@ -63,7 +63,7 @@ ifttt:
 device_tracker: !include device_trackers.yaml
 
 xiaomi_aqara:
-  discovery_retry: 5
+  discovery_retry: 10
   gateways:
     - key: !secret aqara_gateway_key
 
