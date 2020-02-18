@@ -1,7 +1,7 @@
 - platform: ping
   hosts:
-    phone_ping: !secret ip_phone
-  consider_home: 300
+    pixel_ping: !secret ip_phone
   new_device_defaults:
     track_new_devices: false
-    hide_if_away: false
+
+- platform: bluetooth_tracker

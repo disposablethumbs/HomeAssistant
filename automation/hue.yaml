@@ -1,5 +1,5 @@
 - alias: "Entrance Dimmer ON"
-  hide_entity: true
+
   trigger:
     - platform: state
       entity_id: sensor.entrance_dimmer_switch
@@ -15,7 +15,7 @@
         - switch.living_room_dome
 
 - alias: "Entrance Dimmer OFF"
-  hide_entity: true
+
   trigger:
     - platform: state
       entity_id: sensor.entrance_dimmer_switch
@@ -31,7 +31,7 @@
         - switch.space_heater_switch
 
 - alias: "Office Dimmer ON"
-  hide_entity: true
+
   trigger:
     - platform: state
       entity_id: sensor.office_dimmer_switch

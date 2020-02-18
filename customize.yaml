@@ -1,5 +1,10 @@
 person.anthony:
-  entity_picture: "/local/img/anthony.png"
+  entity_picture: "/local/img/users/anthony.png"
+
+binary_sensor.anthony_home:
+  device_class: presence
+  icon: mdi:account-circle
+  entity_picture: "/local/img/users/anthony.png"
 
 group.all_switches:
   hidden: true

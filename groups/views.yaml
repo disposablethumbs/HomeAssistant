@@ -1,22 +1,20 @@
 default_view:
   icon: mdi:home
-  view: true
   entities:
     - binary_sensor.anthony_home
-    - group.all_lights_simple 
+    - group.all_lights_simple
     - group.room_kitchen
     - group.room_living_room
     - group.room_office
     - group.room_bedroom
     - climate.apartment_thermostat
     - camera.living_room_camera
-    
+
 lights_view:
   icon: mdi:lightbulb-on
-  view: true 
   entities:
     - group.main_scenes
-    - group.light_switches 
+    - group.light_switches
     - light.kitchen
     - light.living_room
     - light.office
@@ -25,8 +23,7 @@ lights_view:
 
 media_view:
   icon: mdi:play-circle
-  view: true
-  entities: 
+  entities:
     - media_player.emby_dlna_living_room
     - media_player.emby_emby_mobile_chrome
     - media_player.spotify

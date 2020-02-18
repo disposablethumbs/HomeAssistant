@@ -97,8 +97,12 @@ views:
     theme: darkcyan
     cards:
       - type: entities
+        title: Users
+        icon: mdi:account-circle
+        show_header_toggle: false
         entities:
-          - person.anthony
+          - entity: binary_sensor.anthony_home
+            name: Anthony
       - type: map
         entities:
           - zone.home

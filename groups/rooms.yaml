@@ -1,6 +1,5 @@
 room_kitchen:
   name: Kitchen
-  control: hidden
   entities:
     - switch.kitchen_light_switch
     - light.kitchen_left_front
@@ -10,7 +9,6 @@ room_kitchen:
     - switch.front_door
 room_living_room:
   name: Living Room
-  control: hidden
   entities:
     - switch.living_room_chandelier
     - switch.living_room_dome
@@ -32,7 +30,6 @@ room_living_room:
 
 room_office:
   name: Office
-  control: hidden
   entities:
     - switch.office_light_switch
     - light.office_dome_left
@@ -44,7 +41,6 @@ room_office:
 
 room_bedroom:
   name: Bedroom
-  control: hidden
   entities:
     - switch.bedroom_light_switch
     - light.bedroom_light_1

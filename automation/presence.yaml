@@ -1,5 +1,5 @@
 - alias: Away
-  hide_entity: true
+
   trigger:
     platform: state
     entity_id: binary_sensor.anthony_home
@@ -18,7 +18,7 @@
         - camera.living_room
 
 - alias: Home
-  hide_entity: true
+
   trigger:
     platform: state
     entity_id: binary_sensor.anthony_home
