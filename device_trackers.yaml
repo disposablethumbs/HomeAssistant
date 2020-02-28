@@ -1,3 +1,8 @@
+- platform: tile
+  username: !secret email
+  password: !secret tile_pass
+  monitored_variables: TILE
+
 - platform: ping
   hosts:
     pixel_ping: !secret ip_phone

@@ -22,6 +22,12 @@
       prob_given_true: 0.6
       prob_given_false: 0.1
       to_state: home
+    # Tile Keys
+    - entity_id: device_tracker.tile_dda2164ee80472f9
+      platform: state
+      prob_given_true: 0.6
+      prob_given_false: 0.1
+      to_state: home
 
 # Check network connectivity
 - platform: ping
