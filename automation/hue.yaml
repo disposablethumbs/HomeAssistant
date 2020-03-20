@@ -1,5 +1,4 @@
 - alias: "Entrance Dimmer ON"
-
   trigger:
     - platform: state
       entity_id: sensor.entrance_dimmer_switch
@@ -15,7 +14,6 @@
         - switch.living_room_dome
 
 - alias: "Entrance Dimmer OFF"
-
   trigger:
     - platform: state
       entity_id: sensor.entrance_dimmer_switch
@@ -31,7 +29,6 @@
         - switch.space_heater_switch
 
 - alias: "Office Dimmer ON"
-
   trigger:
     - platform: state
       entity_id: sensor.office_dimmer_switch
@@ -43,3 +40,16 @@
     - service: switch.turn_on
       entity_id:
         - switch.office_light_switch
+
+- alias: "Office Dimmer OFF"
+  trigger:
+    - platform: state
+      entity_id: sensor.office_dimmer_switch
+      to: "4_click"
+    - platform: state
+      entity_id: sensor.office_dimmer_switch
+      to: "4_click_up"
+  action:
+    - service: homeassistant.turn_off
+      entity_id:
+        - switch.lava_lamp
