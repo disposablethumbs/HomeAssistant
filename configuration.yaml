@@ -48,6 +48,8 @@ recorder:
       - sensor.last_boot
       - sensor.date
 
+wake_on_lan:
+
 weather:
   - platform: darksky
     api_key: !secret dark_sky_key

@@ -31,3 +31,9 @@
   payload_available: "Online"
   payload_not_available: "Offline"
   retain: false
+
+# Wake On LAN
+- platform: wake_on_lan
+  name: Office PC
+  mac: !secret mac_officepc
+  host: !secret ip_officepc

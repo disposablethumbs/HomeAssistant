@@ -325,6 +325,19 @@ views:
         camera_image: camera.living_room
         camera_view: live
 
+  # Computers
+  - title: Computers
+    icon: mdi:laptop-chromebook
+    theme: darkcyan
+    cards:
+      - type: entities
+        title: Computers
+        icon: mdi:desktop-classic
+        show_header_toggle: false
+        entities:
+          - entity: switch.office_pc
+            icon: mdi:desk-lamp
+
   # Network View
   - title: Network
     icon: mdi:server-network
