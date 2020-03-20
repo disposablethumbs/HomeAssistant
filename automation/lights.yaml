@@ -1,5 +1,4 @@
 - alias: "Turn on office lamp with wall switch"
-
   trigger:
     platform: state
     entity_id: switch.office_light_switch
@@ -12,20 +11,22 @@
         brightness: 255
         kelvin: 2700
 
-- alias: "Turn off office lamp with wall switch"
-
+- alias: "Turn off office lights with wall switch"
   trigger:
     platform: state
     entity_id: switch.office_light_switch
     from: "on"
     to: "off"
   action:
-    - service: light.turn_off
+    - service: homeassistant.turn_off
       data:
-        entity_id: light.office_lamp_top,light.office_lamp_bottom
+        entity_id:
+          - light.office_lamp_top
+          - light.office_lamp_bottom
+          - light.desk_lightstrip
+          - switch.lava_lamp
 
 - alias: "Turn on lights before sunset if I am home"
-
   trigger:
     - platform: time
       at: "16:30:00"
