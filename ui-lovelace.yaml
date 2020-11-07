@@ -1,13 +1,5 @@
 title: Apartment
 
-resources:
-  - url: /customcards/github/custom-cards/button-card.js?track=true
-    type: module
-  - url: /local/mini-media-player-bundle.js?v=1.4.2
-    type: module
-  - url: /local/roku-card.js?v=0
-    type: module
-
 background: "#303030"
 
 views:
@@ -374,10 +366,6 @@ views:
               service_data:
                 entity_id: automation.restart_modem
           - entity: binary_sensor.google_home
-          - entity: sensor.speedtest_upload
-            name: Upload
-          - entity: sensor.speedtest_download
-            name: Download
 
   # Settings View
   - title: Settings

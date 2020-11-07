@@ -5,6 +5,8 @@ homeassistant:
   elevation: !secret elevation
   unit_system: metric
   time_zone: America/Toronto
+  external_url: !secret ddns_url
+  internal_url: !secret internal_url
   auth_providers:
     - type: homeassistant
     - type: trusted_networks
@@ -22,9 +24,15 @@ frontend:
   themes: !include_dir_merge_named themes/
 lovelace:
   mode: yaml
+  resources:
+    - url: /customcards/github/custom-cards/button-card.js?track=true
+      type: module
+    - url: /local/mini-media-player-bundle.js?v=1.4.2
+      type: module
+    - url: /local/roku-card.js?v=0
+      type: module
 
 http:
-  base_url: !secret ddns_url
   ssl_certificate: /ssl/fullchain.pem
   ssl_key: /ssl/privkey.pem
   login_attempts_threshold: 5
@@ -73,6 +81,8 @@ xiaomi_aqara:
 nest:
   client_id: !secret nest_id
   client_secret: !secret nest_secret
+  project_id: !secret nest_project_id
+  subscriber_id: !secret nest_subscriber_id
 
 # Lights
 light: !include lights.yaml
@@ -99,11 +109,6 @@ roku:
 # Switches
 switch: !include switch.yaml
 tplink:
-
-tuya:
-  username: !secret email
-  password: !secret tuya_password
-  country_code: "1"
 
 # Wemo
 wemo:

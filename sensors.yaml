@@ -1,6 +1,3 @@
-# Weather prediction
-- platform: yr
-
 - platform: systemmonitor
   resources:
     - type: network_in
