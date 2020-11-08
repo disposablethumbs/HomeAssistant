@@ -1,4 +1,5 @@
 homeassistant:
+  external_url: !secret ddns_url
   auth_providers:
     - type: homeassistant
     - type: trusted_networks
@@ -25,7 +26,6 @@ lovelace:
       type: module
 
 http:
-  base_url: !secret ddns_url
   ssl_certificate: /ssl/fullchain.pem
   ssl_key: /ssl/privkey.pem
   login_attempts_threshold: 5
