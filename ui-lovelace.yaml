@@ -358,7 +358,8 @@ views:
             icon: mdi:network-router
             tap_action:
               action: toggle
-              confirmation: true
+              confirmation:
+                text: Are you sure?
           - entity: binary_sensor.network
             hold_action:
               action: call-service
