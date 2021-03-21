@@ -7,7 +7,7 @@ default_view:
     - group.room_living_room
     - group.room_office
     - group.room_bedroom
-    - climate.apartment_thermostat
+    - climate.thermostat
     - camera.living_room_camera
 
 lights_view:

@@ -50,7 +50,7 @@ views:
 
       # Thermostat
       - type: thermostat
-        entity: climate.apartment_thermostat
+        entity: climate.thermostat
         name: Apartment
 
       # Space Heater

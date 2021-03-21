@@ -29,7 +29,7 @@
   action:
     service: climate.set_hvac_mode
     data:
-      entity_id: climate.apartment_thermostat
+      entity_id: climate.thermostat
       hvac_mode: "off"
 
 - alias: Balcony Door Closed
@@ -40,7 +40,7 @@
   action:
     service: climate.set_hvac_mode
     data_template:
-      entity_id: climate.apartment_thermostat
+      entity_id: climate.thermostat
       hvac_mode: >
         {% if states('sensor.compare_temp_current_target') | float > 1 %}
           cool

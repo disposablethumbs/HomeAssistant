@@ -38,7 +38,7 @@ mqtt:
   password: !secret mqtt_pass
 
 recorder:
-  purge_keep_days: 7
+  purge_keep_days: 2
   exclude:
     domains:
       - automation
@@ -95,9 +95,6 @@ remote:
   - platform: harmony
     name: Office
     host: !secret ip_harmony_office
-
-roku:
-  - host: !secret ip_roku
 
 # Switches
 switch: !include switch.yaml
