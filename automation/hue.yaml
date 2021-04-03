@@ -1,55 +1,55 @@
 - alias: "Entrance Dimmer ON"
   trigger:
-    - platform: state
-      entity_id: sensor.entrance_dimmer_switch
-      to: "1_click"
-    - platform: state
-      entity_id: sensor.entrance_dimmer_switch
-      to: "1_click_up"
+    - device_id: 312c2d543e7b4ac492dff7b06b556853
+      domain: hue
+      platform: device
+      type: remote_button_short_release
+      subtype: turn_on
   action:
     - service: homeassistant.turn_on
-      entity_id:
-        - switch.kitchen_light_switch
-        - switch.living_room_chandelier
-        - switch.living_room_dome
+      target:
+        entity_id:
+          - switch.kitchen_light_switch
+          - switch.living_room_chandelier
+          - switch.living_room_dome
 
 - alias: "Entrance Dimmer OFF"
   trigger:
-    - platform: state
-      entity_id: sensor.entrance_dimmer_switch
-      to: "4_click"
-    - platform: state
-      entity_id: sensor.entrance_dimmer_switch
-      to: "4_click_up"
+    - device_id: 312c2d543e7b4ac492dff7b06b556853
+      domain: hue
+      platform: device
+      type: remote_button_short_release
+      subtype: turn_off
   action:
     - service: homeassistant.turn_off
-      entity_id:
-        - group.all_lights_simple
-        - remote.living_room
-        - switch.space_heater_switch
+      target:
+        entity_id:
+          - group.all_lights_simple
+          - remote.living_room
+          - switch.space_heater_switch
 
 - alias: "Office Dimmer ON"
   trigger:
-    - platform: state
-      entity_id: sensor.office_dimmer_switch
-      to: "1_click"
-    - platform: state
-      entity_id: sensor.office_dimmer_switch
-      to: "1_click_up"
+    - device_id: bee9c2808824406b8cc333a078765ca9
+      domain: hue
+      platform: device
+      type: remote_button_short_release
+      subtype: turn_on
   action:
     - service: switch.turn_on
-      entity_id:
-        - switch.office_light_switch
+      target:
+        entity_id:
+          - switch.office_light_switch
 
 - alias: "Office Dimmer OFF"
   trigger:
-    - platform: state
-      entity_id: sensor.office_dimmer_switch
-      to: "4_click"
-    - platform: state
-      entity_id: sensor.office_dimmer_switch
-      to: "4_click_up"
+    - device_id: bee9c2808824406b8cc333a078765ca9
+      domain: hue
+      platform: device
+      type: remote_button_short_release
+      subtype: turn_on
   action:
     - service: homeassistant.turn_off
-      entity_id:
-        - switch.lava_lamp
+      target:
+        entity_id:
+          - switch.lava_lamp

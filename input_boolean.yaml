@@ -1,7 +1,0 @@
-guests:
-  name: Guest Mode
-  icon: mdi:account-group
-
-winter:
-  name: Winter
-  icon: mdi:snowflake

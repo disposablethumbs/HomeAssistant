@@ -22,8 +22,6 @@ lovelace:
       type: module
     - url: /local/mini-media-player-bundle.js?v=1.4.2
       type: module
-    - url: /local/roku-card.js?v=0
-      type: module
 
 http:
   ssl_certificate: /ssl/fullchain.pem
@@ -65,11 +63,6 @@ ifttt:
 
 device_tracker: !include device_trackers.yaml
 
-xiaomi_aqara:
-  discovery_retry: 10
-  gateways:
-    - key: !secret aqara_gateway_key
-
 # Thermostat
 nest:
   client_id: !secret nest_id
@@ -86,15 +79,6 @@ media_player: !include media_players.yaml
 spotify:
   client_id: !secret spotify_client_id
   client_secret: !secret spotify_client_secret
-
-# Harmony
-remote:
-  - platform: harmony
-    name: Living Room
-    host: !secret ip_harmony_livingroom
-  - platform: harmony
-    name: Office
-    host: !secret ip_harmony_office
 
 # Switches
 switch: !include switch.yaml
@@ -115,9 +99,7 @@ automation: !include_dir_merge_list automation/
 binary_sensor: !include binary_sensors.yaml
 group: !include_dir_merge_named groups/
 input_select: !include input_select.yaml
-input_boolean: !include input_boolean.yaml
 script: !include_dir_merge_named scripts/
 python_script:
 sensor: !include sensors.yaml
-
 zone: !include zones.yaml

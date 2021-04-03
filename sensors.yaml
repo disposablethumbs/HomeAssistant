@@ -7,8 +7,6 @@
     - type: memory_use_percent
     - type: last_boot
 
-- platform: huesensor
-
 - platform: template
   sensors:
     current_activity:

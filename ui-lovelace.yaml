@@ -6,10 +6,35 @@ views:
   # Dashboard View
   - title: DASHBOARD
     icon: mdi:home
-    theme: darkcyan
     cards:
       - type: weather-forecast
         entity: weather.dark_sky
+
+      - type: entities
+        title: Users
+        icon: mdi:account-circle
+        show_header_toggle: false
+        entities:
+          - entity: binary_sensor.anthony_home
+            name: Anthony
+
+      - type: map
+        entities:
+          - zone.home
+          - device_tracker.pixel_4
+        default_zoom: 18
+
+        # Thermostat
+      - type: thermostat
+        entity: climate.thermostat
+        name: Apartment
+        
+      - type: picture-glance
+        entities:
+          - switch.living_room_camera
+        title: Living Room
+        camera_image: camera.living_room
+        camera_view: live
 
       - type: horizontal-stack
         cards:
@@ -48,63 +73,9 @@ views:
               service_data:
                 entity_id: switch.front_door
 
-      # Thermostat
-      - type: thermostat
-        entity: climate.thermostat
-        name: Apartment
-
-      # Space Heater
-      - type: conditional
-        conditions:
-          - entity: input_boolean.winter
-            state: "on"
-        card:
-          type: horizontal-stack
-          cards:
-            - type: entity-button
-              entity: switch.space_heater_switch
-              icon: mdi:power-socket-us
-              tap_action:
-                action: toggle
-            - type: entity-button
-              entity: script.heater_power
-              icon: mdi:power
-              tap_action:
-                action: call-service
-                service: script.turn_on
-                service_data:
-                  entity_id: script.heater_power
-            - type: entity-button
-              entity: script.heater_mode
-              icon: mdi:power-settings
-              tap_action:
-                action: call-service
-                service: script.turn_on
-                service_data:
-                  entity_id: script.heater_mode
-
-  # User View
-  - title: Users
-    icon: mdi:account
-    theme: darkcyan
-    cards:
-      - type: entities
-        title: Users
-        icon: mdi:account-circle
-        show_header_toggle: false
-        entities:
-          - entity: binary_sensor.anthony_home
-            name: Anthony
-      - type: map
-        entities:
-          - zone.home
-          - device_tracker.pixel_4
-        default_zoom: 18
-
   # Lights View
   - title: Lights
     icon: mdi:lightbulb-on
-    theme: darkcyan
     cards:
       - type: horizontal-stack
         cards:
@@ -244,7 +215,6 @@ views:
   # Media View
   - title: Media
     icon: mdi:play-circle
-    theme: darkcyan
     cards:
       - type: custom:mini-media-player
         entity: media_player.spotify
@@ -270,7 +240,6 @@ views:
         title: Harmony
         show_header_toggle: false
         entities:
-          - input_select.living_room_hub
           - type: call-service
             name: Volume Up
             icon: mdi:volume-high
@@ -295,32 +264,10 @@ views:
               entity_id: script.pc_power
 
       # Roku
-      - type: "custom:roku-card"
-        entity: media_player.living_room_roku
-        name: Roku
-        tv: true
-        power:
-          service: remote.turn_on
-          service_data:
-            entity_id: remote.living_room
-            activity: Watch Roku
-
-  # Camera View
-  - title: Camera
-    icon: mdi:cctv
-    theme: darkcyan
-    cards:
-      - type: picture-glance
-        entities:
-          - switch.living_room_camera
-        title: Living Room
-        camera_image: camera.living_room
-        camera_view: live
 
   # Computers
   - title: Computers
     icon: mdi:laptop-chromebook
-    theme: darkcyan
     cards:
       - type: entities
         title: Computers
@@ -333,7 +280,6 @@ views:
   # Network View
   - title: Network
     icon: mdi:server-network
-    theme: darkcyan
     cards:
       # Device Status
       - type: glance
@@ -375,7 +321,7 @@ views:
       - type: entities
         title: Automations
         show_header_toggle: false
-        entities:
+        entities:          
           - entity: input_boolean.guests
           - entity: automation.front_door_open
             name: Front Door - Lights

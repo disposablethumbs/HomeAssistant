@@ -31,7 +31,7 @@
 
 # Check network connectivity
 - platform: ping
-  host: 1.1.1.1
+  host: www.google.com
   name: Network
   scan_interval: 30
 
