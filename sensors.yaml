@@ -12,13 +12,16 @@
     current_activity:
       friendly_name: "Current Activity"
       value_template: "{{ state_attr('remote.living_room','current_activity') }}"
-    compare_temp_indoor_outdoor:
-      friendly_name: "Temperature Difference Indoor-Outdoor"
+    target_temperature:
+      friendly_name: "Target Temperature"
       value_template: >
-        {{ states('sensor.thermostat_temperature') | round(1) 
-          - state_attr('weather.dark_sky','temperature') | round(1) }}
+        {% if state_attr('climate.thermostat','temperature') %}
+          {{ state_attr('climate.thermostat','temperature') }}
+        {% else %}
+          24
+        {% endif %}
     compare_temp_current_target:
       friendly_name: "Temperature Difference Current-Target"
       value_template: >
-        {{ states('sensor.thermostat_temperature') | round(1)
-          - states('sensor.thermostat_target') | round(1) }}
+        {{ states('sensor.thermostat_temperature') | float
+          - states('sensor.target_temperature') | float }}

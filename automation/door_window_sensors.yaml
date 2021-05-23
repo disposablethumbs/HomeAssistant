@@ -10,6 +10,22 @@
       state: below_horizon
     - condition: template
       value_template: "{{ (as_timestamp(now())-as_timestamp(states.sensor.entrance_dimmer_switch.last_updated)) > 5 }}"
+    - condition: or
+      conditions:
+        - condition: numeric_state
+          entity_id: light.kitchen
+          value_template: '{% if states.light.kitchen.state == "on"  %}{{ states.light.kitchen.attributes.brightness }}{% else %}0{% endif %}'
+          below: 120
+        - condition: numeric_state
+          entity_id: light.kitchen
+          value_template: >
+            {% if state_attr('light.kitchen', 'color_temp') %}
+              {{ states.light.kitchen.attributes.color_temp }}
+            {% else %}
+              0
+            {% endif %}
+          below: 365
+          above: 400        
   action:
     - service: switch.turn_on
       entity_id:
@@ -18,7 +34,7 @@
       entity_id:
         - light.kitchen
       data:
-        brightness: 255
+        brightness: 120
         kelvin: 2700
 
 - alias: Balcony Door Open
@@ -42,10 +58,10 @@
     data_template:
       entity_id: climate.thermostat
       hvac_mode: >
-        {% if states('sensor.compare_temp_current_target') | float > 1 %}
+        {% if states('sensor.compare_temp_current_target') | float > 0 %}
           cool
-        {% elif states('sensor.compare_temp_current_target') | float < 1 %}
+        {% elif states('sensor.compare_temp_current_target') | float < 0 %}
           heat
         {% else %}
-          off
+          heat_cool
         {% endif %}
