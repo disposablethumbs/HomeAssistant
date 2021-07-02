@@ -13,6 +13,7 @@ all_lights_simple:
     - light.office_lamp_top
     - light.office_lamp_bottom
     - switch.bedroom_light_switch
+    - light.balcony_lightstrip
 
 kitchen_lights:
   name: Kitchen Lights

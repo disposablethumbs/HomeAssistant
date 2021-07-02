@@ -212,6 +212,11 @@ views:
           - entity: light.bedroom_light_2
             name: Dome 2
 
+          - type: section
+            label: Outside
+          - entity: light.balcony_lightstrip
+            name: Balcony Lightstrip
+
   # Media View
   - title: Media
     icon: mdi:play-circle

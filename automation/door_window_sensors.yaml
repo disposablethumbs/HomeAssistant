@@ -43,10 +43,15 @@
     entity_id: binary_sensor.balcony_door_sensor
     to: "on"
   action:
-    service: climate.set_hvac_mode
-    data:
-      entity_id: climate.thermostat
-      hvac_mode: "off"
+    - service: climate.set_hvac_mode
+      data:
+        entity_id: climate.thermostat
+        hvac_mode: "off"
+    - condition: template
+      value_template: "{{ state_attr('sun.sun', 'elevation') < -5 }}"
+    - service: light.turn_on
+      target:
+        entity_id: light.balcony_lightstrip
 
 - alias: Balcony Door Closed
   trigger:
@@ -54,14 +59,18 @@
     entity_id: binary_sensor.balcony_door_sensor
     to: "off"
   action:
-    service: climate.set_hvac_mode
-    data_template:
-      entity_id: climate.thermostat
-      hvac_mode: >
-        {% if states('sensor.compare_temp_current_target') | float > 0 %}
-          cool
-        {% elif states('sensor.compare_temp_current_target') | float < 0 %}
-          heat
-        {% else %}
-          heat_cool
-        {% endif %}
+    - service: climate.set_hvac_mode
+      data_template:
+        entity_id: climate.thermostat
+        hvac_mode: >
+          {% if states('sensor.compare_temp_current_target') | float > 0 %}
+            cool
+          {% elif states('sensor.compare_temp_current_target') | float < 0 %}
+            heat
+          {% else %}
+            heat_cool
+          {% endif %}
+    - service: light.turn_off
+      target:
+        entity_id: light.balcony_lightstrip
+
