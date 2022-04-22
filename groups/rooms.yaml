@@ -17,7 +17,6 @@ room_living_room:
     - light.living_room_dome_right
     - light.hallway
     - light.nanoleaf
-    - input_select.living_room_hub
     - script.receiver_vol_up
     - script.receiver_vol_down
     - script.pc_power

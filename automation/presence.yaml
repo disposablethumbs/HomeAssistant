@@ -1,4 +1,5 @@
-- alias: Away
+- alias: Anthony Away
+  id: c0de5413-8501-448c-a015-0ec39deaf8dc
 
   trigger:
     platform: state
@@ -17,8 +18,8 @@
       entity_id:
         - camera.living_room
 
-- alias: Home
-
+- alias: Anthony Home
+  id: d3dc6eb7-df8c-430e-94ed-226dd4bb6fe4
   trigger:
     platform: state
     entity_id: binary_sensor.anthony_home

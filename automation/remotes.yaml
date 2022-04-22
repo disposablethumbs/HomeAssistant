@@ -1,47 +1,17 @@
-- alias: Harmony
-
-  trigger:
-    platform: state
-    entity_id: input_select.living_room_hub
-  action:
-    - service: remote.turn_on
-      entity_id: remote.living_room
-      data_template:
-        activity: >
-          {% if is_state("input_select.living_room_hub", "Watch PC") %}
-            Watch PC
-          {% elif is_state("input_select.living_room_hub", "Watch Roku") %}
-            Watch Roku
-          {% elif is_state("input_select.living_room_hub", "Listen to Music") %}
-            Listen to Music
-          {% elif is_state("input_select.living_room_hub", "Power Off") %}
-            PowerOff
-          {% endif %}
-
-- alias: Harmony Off
-
-  trigger:
-    platform: state
-    entity_id: input_select.living_room_hub
-    to: Power Off
-  action:
-    - service: remote.turn_off
-      entity_id: remote.living_room
-
-- alias: "Start - Update Harmony status"
-
+- alias: "Sync Harmony with Living Room Chromecast"
+  id: 73b078dc-1f3a-4b49-9ff1-e5173b41489f
   trigger:
     - platform: state
-      entity_id: remote.living_room
-    - platform: homeassistant
-      event: start
+      entity_id: media_player.living_room_chromecast
+      to: "playing"
   action:
-    service: input_select.select_option
-    data_template:
-      entity_id: input_select.living_room_hub
-      option: >
-        {% if is_state_attr('remote.living_room','current_activity','PowerOff') %}
-          Power Off
-        {% else %}
-          {{ state_attr('remote.living_room','current_activity') }}
-        {% endif %}
+    - service: remote.turn_on
+      data:
+        entity_id: remote.living_room
+        activity: "Watch Google TV"
+    - condition: "{{ state_attr('light.living_room','brightness') > 160 }}"
+    - service: scene.turn_on
+      target:
+        entity_id:
+          - scene.kitchen_dimmed
+          - scene.living_room_dimmed

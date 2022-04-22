@@ -22,18 +22,13 @@ lovelace:
       type: module
     - url: /local/mini-media-player-bundle.js?v=1.4.2
       type: module
+    - url: "https://fonts.googleapis.com/css?family=Raleway"
+      type: css
 
 http:
   ssl_certificate: /ssl/fullchain.pem
   ssl_key: /ssl/privkey.pem
   login_attempts_threshold: 5
-
-mqtt:
-  broker: !secret ip_piserver
-  port: 1883
-  client_id: hassio
-  username: !secret mqtt_user
-  password: !secret mqtt_pass
 
 recorder:
   purge_keep_days: 2
@@ -54,21 +49,32 @@ weather:
     api_key: !secret dark_sky_key
     mode: daily
 
-# Text to speech
-tts:
-  - platform: google_translate
-
 ifttt:
   key: !secret ifttt_key
 
 device_tracker: !include device_trackers.yaml
+
+# Google Assistant
+google_assistant:
+  project_id: !secret ga_id
+  service_account: !include homeassistant-e714b.json
+  report_state: true
+  expose_by_default: false
+  entity_config:
+    switch.fireplace:
+      name: "Fireplace"
+      room: "Living Room"
+      expose: true
+    switch.office_heater:
+      name: "Office Heater"
+      room: "Office"
+      expose: true
 
 # Thermostat
 nest:
   client_id: !secret nest_id
   client_secret: !secret nest_secret
   project_id: !secret nest_project_id
-  subscriber_id: !secret nest_subscriber_id
 
 # Lights
 light: !include lights.yaml
@@ -82,7 +88,6 @@ spotify:
 
 # Switches
 switch: !include switch.yaml
-tplink:
 
 # Wemo
 wemo:

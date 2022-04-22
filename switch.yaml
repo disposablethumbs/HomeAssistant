@@ -1,5 +1,6 @@
 - platform: template
   switches:
+    # Living Room Camera
     living_room_camera:
       friendly_name: Living Room Camera
       value_template: "{{ is_state('camera.living_room','recording') }}"
@@ -16,6 +17,58 @@
           mdi:camera
         {% else %}
           mdi:camera-off
+        {% endif %}
+
+    # Fireplace
+    fireplace:
+      friendly_name: Fireplace
+      value_template: "{{ is_state('remote.living_room', 'Fireplace') }}"
+      turn_on:
+        service: remote.send_command
+        target:
+          entity_id: remote.living_room
+        data:          
+          command: PowerToggle
+          device: Fireplace
+      turn_off:
+        service: remote.send_command
+        target:
+          entity_id: remote.living_room
+        data:          
+          command: PowerToggle
+          device: Fireplace
+      icon_template: >-
+        {% if is_state('remote.living_room', 'Fireplace') %}
+          mdi:fireplace
+        {% else %}
+          mdi:fireplace-off
+        {% endif %}
+
+        # Fireplace
+    
+    # Office Heater
+    office_heater:
+      friendly_name: "Office Heater"
+      value_template: "{{ is_state('remote.office', 'Heater') }}"
+      turn_on:
+        service: remote.send_command
+        target:
+          entity_id: remote.office
+        data:          
+          command: PowerToggle
+          device: "Pelonis Climate Control"
+      turn_off:
+        service: remote.send_command
+        target:
+          entity_id: remote.office
+        data:          
+          command: PowerToggle
+          device: "Pelonis Climate Control"
+      icon_template: >-
+        {% if is_state('remote.living room', 'Heater') %}
+          mdi:radiator
+        {% else %}
+          mdi:radiator-diisabled
         {% endif %}
 
 # Front Door

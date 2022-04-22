@@ -1,10 +1,12 @@
-- alias: "Entrance Dimmer ON"
+- alias: "Entrance Dimmer (On)"
+  id: c7fd9a4b-9ef0-4b53-83b9-5b59e1d3c031
   trigger:
-    - device_id: 312c2d543e7b4ac492dff7b06b556853
-      domain: hue
-      platform: device
-      type: remote_button_short_release
-      subtype: turn_on
+    - platform: event
+      event_type: hue_event
+      event_data:
+        id: entrance_dimmer_switch_button
+        type: short_release
+        subtype: 1
   action:
     - service: homeassistant.turn_on
       target:
@@ -12,14 +14,17 @@
           - switch.kitchen_light_switch
           - switch.living_room_chandelier
           - switch.living_room_dome
+          - scene.kitchen_normal
 
-- alias: "Entrance Dimmer OFF"
+- alias: "Entrance Dimmer (Off)"
+  id: 7a254108-654c-48f8-95ee-2569c658b9e9
   trigger:
-    - device_id: 312c2d543e7b4ac492dff7b06b556853
-      domain: hue
-      platform: device
-      type: remote_button_short_release
-      subtype: turn_off
+    - platform: event
+      event_type: hue_event
+      event_data:
+        id: entrance_dimmer_switch_button
+        type: short_release
+        subtype: 4
   action:
     - service: homeassistant.turn_off
       target:
@@ -28,26 +33,30 @@
           - remote.living_room
           - switch.space_heater_switch
 
-- alias: "Office Dimmer ON"
+- alias: "Office Dimmer (On)"
+  id: 715074dd-0ef6-4aff-b4f6-f77cea63f9aa
   trigger:
-    - device_id: bee9c2808824406b8cc333a078765ca9
-      domain: hue
-      platform: device
-      type: remote_button_short_release
-      subtype: turn_on
+    - platform: event
+      event_type: hue_event
+      event_data:
+        id: office_dimmer_switch_button
+        type: short_release
+        subtype: 1
   action:
     - service: switch.turn_on
       target:
         entity_id:
           - switch.office_light_switch
 
-- alias: "Office Dimmer OFF"
+- alias: "Office Dimmer (Off)"
+  id: e2af5c39-b91b-4b63-97bd-66292f3224ca
   trigger:
-    - device_id: bee9c2808824406b8cc333a078765ca9
-      domain: hue
-      platform: device
-      type: remote_button_short_release
-      subtype: turn_on
+    - platform: event
+      event_type: hue_event
+      event_data:
+        id: office_dimmer_switch_button
+        type: short_release
+        subtype: 4
   action:
     - service: homeassistant.turn_off
       target:

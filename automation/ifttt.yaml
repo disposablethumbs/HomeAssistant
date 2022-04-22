@@ -1,4 +1,5 @@
 - alias: IFTTT Webhook
+  id: 39e1c7e4-5c6e-4b5a-bb5b-43c0a924e359
   trigger:
     platform: event
     event_type: ifttt_webhook_received

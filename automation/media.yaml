@@ -1,8 +1,9 @@
 - alias: "Bedroom TV Auto Off"
+  id: 7dabd790-7214-4577-935b-1799e58ea068
   trigger:
     platform: state
     entity_id: media_player.bedroom_chromecast
-    to: 'off'
+    to: "off"
     for:
       minutes: 5
   action:
@@ -10,31 +11,36 @@
     entity_id: switch.bedroom_tv
 
 - alias: "Bedroom Chromecast Auto Off"
+  id: 15d09d34-d449-4a7e-9c44-ff41195af745
   trigger:
     platform: state
     entity_id: switch.bedroom_tv
-    to: 'off'
+    to: "off"
   action:
     service: media_player.turn_off
     entity_id: media_player.bedroom_chromecast
 
-- alias: "Bedroom TV playing"
-  trigger: 
+- alias: "Bedroom Chromecast Start"
+  id: 206c1328-dde1-4cce-885b-1c532a87c3f6
+  trigger:
     platform: state
     entity_id: media_player.bedroom_chromecast
-    to: 'playing'
+    to: "playing"
   condition:
     - condition: numeric_state
-      entity_id: light.bedroom
-      value_template: '{% if states.light.bedroom.state == "on"  %}{{ states.light.bedroom.attributes.brightness }}{% else %}0{% endif %}'
+      entity_id: light.bedroom_lights
+      value_template: '{% if states.light.bedroom_lights.state == "on"  %}{{ states.light.bedroom_lights.attributes.brightness }}{% else %}0{% endif %}'
       above: 150
   action:
     - service: switch.turn_on
       entity_id: switch.bedroom_tv
     - service: light.turn_on
       data:
-        entity_id: light.bedroom
         brightness: 150
+      target:
+        entity_id:
+          - light.bedroom_light_1
+          - light.bedroom_light_2
     - service: media_player.volume_set
       data:
         entity_id: media_player.bedroom_chromecast

@@ -1,0 +1,14 @@
+open_front_door:
+  alias: Open Front Door
+  sequence:
+    - choose:
+        - conditions:
+            - condition: state
+              entity_id: lock.front_door
+              state: "locked"
+          sequence:
+            - service: lock.unlock
+              entity_id: lock.front_door
+            - wait_template: "{{ is_state('lock.front_door', 'unlocked') }}"
+    - service: switch.turn_on
+      entity_id: switch.front_door

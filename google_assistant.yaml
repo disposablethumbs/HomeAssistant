@@ -1,0 +1,7 @@
+- project_id: !secret ga_id
+  service_account: !include homeassistant-e714b.json
+  report _state: true
+  expose_by_default: false
+  entity_config:
+    - switch.fireplace
+    - switch.office_heater

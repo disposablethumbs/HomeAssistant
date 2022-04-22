@@ -1,8 +1,0 @@
-- alias: Set Theme On Start
-  trigger:
-    - platform: homeassistant
-      event: start
-  action:
-    - service: frontend.set_theme
-      data:
-        name: default

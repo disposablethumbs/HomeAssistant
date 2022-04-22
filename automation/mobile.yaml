@@ -1,0 +1,47 @@
+- alias: "Cell phone charger on"
+  id: 892e7348-85eb-4d13-812d-2fe3ac1dd49b
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.pixel_5_battery_level
+    below: 21
+  action:
+    - service: switch.turn_on
+      entity_id: switch.1001364455_1
+
+- alias: "Cell phone charger on (delayed)"
+  id: 7be6b8ee-1eed-417d-b457-a9cfca42b8a0
+  trigger:
+    platform: state
+    entity_id: switch.1001364455_1
+    from: "unavailable"
+    to: "off"
+  action:
+    - condition: numeric_state
+      entity_id: sensor.pixel_5_battery_level
+      below: 21
+    - service: switch.turn_on
+      entity_id: switch.1001364455_1
+
+- alias: "Cell phone charger off"
+  id: 46cc0487-7fa4-46dc-99fe-7c83b1f648fd
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.pixel_5_battery_level
+    above: 79
+  action:
+    - service: switch.turn_off
+      entity_id: switch.1001364455_1
+
+- alias: "Cell phone charger off (delayed)"
+  id: 78f6bdeb-7021-4a68-8c1a-156e3e495167
+  trigger:
+    platform: state
+    entity_id: switch.1001364455_1
+    from: "unavailable"
+    to: "on"
+  action:
+    - condition: numeric_state
+      entity_id: sensor.pixel_5_battery_level
+      above: 79
+    - service: switch.turn_off
+      entity_id: switch.1001364455_1

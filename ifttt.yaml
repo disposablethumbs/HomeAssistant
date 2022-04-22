@@ -1,0 +1,12 @@
+- alias: IFTTT Webhook
+  trigger:
+    platform: event
+    event_type: ifttt_webhook_received
+    event_data:
+      action: call_service
+  action:
+    service: python_script.ifttt_hook
+    data_template:
+      service: "{{ trigger.event.data.service }}"
+      entity_id: "{{ trigger.event.data.entity_id }}"
+      fan_mode: "{{ trigger.event.data.fan_mode }}"

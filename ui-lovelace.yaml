@@ -21,14 +21,14 @@ views:
       - type: map
         entities:
           - zone.home
-          - device_tracker.pixel_4
+          - device_tracker.anthony
         default_zoom: 18
 
         # Thermostat
       - type: thermostat
         entity: climate.thermostat
         name: Apartment
-        
+
       - type: picture-glance
         entities:
           - switch.living_room_camera
@@ -77,13 +77,72 @@ views:
   - title: Lights
     icon: mdi:lightbulb-on
     cards:
-      - type: horizontal-stack
-        cards:
-          - type: light
-            entity: light.all_lights
-          - type: light
-            name: Main Lights
-            entity: light.main
+      # Lights list
+      - type: entities
+        show_header_toggle: false
+        title: Lights
+        entities:
+          # Kitchen
+          - type: section
+            label: Kitchen
+          - entity: light.kitchen_left_front
+            name: Left Front
+          - entity: light.kitchen_right_front
+            name: Right Front
+          - entity: light.kitchen_rear
+            name: Rear
+          - entity: light.entry
+            name: Entry
+
+          # Living Room
+          - type: section
+            label: Living Room
+          - entity: light.living_room_hanging
+            name: Hanging
+          - entity: light.living_room_dome_left
+            name: Dome Left
+          - entity: light.living_room_dome_right
+            name: Dome Right
+          - entity: light.hallway
+            name: Hallway
+
+          # Office
+          - type: section
+            label: Office
+          - entity: light.office_dome_left
+            name: Dome Left
+          - entity: light.office_dome_right
+            name: Dome Right
+          - entity: light.office_lamp_top
+            name: Lamp Top
+          - entity: light.office_lamp_bottom
+            name: Lamp Bottom
+          - entity: light.desk_lightstrip
+            name: Desk Lightstrip
+
+          # Accent
+          - type: section
+            label: Accent
+          - light.nanoleaf
+          - entity: light.living_room_tv_lightstrip
+            name: TV
+
+          # Bedroom
+          - type: section
+            label: Bedroom
+          - entity: light.bedroom_light_1
+            name: Dome 1
+          - entity: light.bedroom_light_2
+            name: Dome 2
+          - light.bedroom_lamp
+
+          # Outside
+          - type: section
+            label: Outside
+          - entity: light.balcony_lightstrip
+            name: Balcony Lightstrip
+
+      # Rooms
       - type: glance
         title: Rooms
         entities:
@@ -119,6 +178,7 @@ views:
               service: homeassistant.toggle
               service_data:
                 entity_id: group.bedroom_lights
+
       # Scenes
       - type: glance
         title: Scenes
@@ -144,78 +204,23 @@ views:
               service: scene.turn_on
               service_data:
                 entity_id: scene.urban_temple
-      - type: horizontal-stack
+
+      # Light Control Grid
+      - type: grid
         cards:
+          - type: light
+            name: Main Lights
+            entity: light.main
           - type: light
             entity: light.kitchen
           - type: light
             entity: light.living_room
-      - type: horizontal-stack
-        cards:
           - type: light
             entity: light.office
           - type: light
-            entity: light.bedroom
-      - type: light
-        entity: light.accent_lights
-
-      # Lights list
-      - type: entities
-        show_header_toggle: false
-        title: Lights
-        entities:
-          - type: section
-            label: Kitchen
-          - entity: light.kitchen_left_front
-            name: Left Front
-          - entity: light.kitchen_right_front
-            name: Right Front
-          - entity: light.kitchen_rear
-            name: Rear
-          - entity: light.entry
-            name: Entry
-
-          - type: section
-            label: Living Room
-          - entity: light.living_room_hanging
-            name: Hanging
-          - entity: light.living_room_dome_left
-            name: Dome Left
-          - entity: light.living_room_dome_right
-            name: Dome Right
-          - entity: light.hallway
-            name: Hallway
-
-          - type: section
-            label: Accent
-          - light.nanoleaf
-          - entity: light.living_room_bloom
-            name: Bloom
-          - entity: light.living_room_tv
-            name: TV
-
-          - type: section
-            label: Office
-          - entity: light.office_dome_left
-            name: Dome Left
-          - entity: light.office_dome_right
-            name: Dome Right
-          - entity: light.office_lamp_top
-            name: Lamp Top
-          - entity: light.office_lamp_bottom
-            name: Lamp Bottom
-
-          - type: section
-            label: Bedroom
-          - entity: light.bedroom_light_1
-            name: Dome 1
-          - entity: light.bedroom_light_2
-            name: Dome 2
-
-          - type: section
-            label: Outside
-          - entity: light.balcony_lightstrip
-            name: Balcony Lightstrip
+            entity: light.bedroom_lights
+          - type: light
+            entity: light.accent_lights
 
   # Media View
   - title: Media
@@ -326,7 +331,7 @@ views:
       - type: entities
         title: Automations
         show_header_toggle: false
-        entities:          
+        entities:
           - entity: input_boolean.guests
           - entity: automation.front_door_open
             name: Front Door - Lights

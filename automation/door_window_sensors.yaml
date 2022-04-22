@@ -1,4 +1,5 @@
 - alias: Front Door Open
+  id: 829857be-8e87-4466-a39b-516fd79fc13a
   trigger:
     platform: state
     entity_id: binary_sensor.front_door_sensor
@@ -25,7 +26,7 @@
               0
             {% endif %}
           below: 365
-          above: 400        
+          above: 400
   action:
     - service: switch.turn_on
       entity_id:
@@ -38,6 +39,7 @@
         kelvin: 2700
 
 - alias: Balcony Door Open
+  id: 9f1fc0cd-e399-4c72-ba0b-f072a0caa8df
   trigger:
     platform: state
     entity_id: binary_sensor.balcony_door_sensor
@@ -54,6 +56,7 @@
         entity_id: light.balcony_lightstrip
 
 - alias: Balcony Door Closed
+  id: 3d6402f4-bc80-4bc2-ac1e-f8b631403236
   trigger:
     platform: state
     entity_id: binary_sensor.balcony_door_sensor
@@ -73,4 +76,3 @@
     - service: light.turn_off
       target:
         entity_id: light.balcony_lightstrip
-

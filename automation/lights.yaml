@@ -1,4 +1,5 @@
-- alias: "Turn on office lamp with wall switch"
+- alias: "Office Lights On"
+  id: e29c4cf2-662f-4494-817e-181c5051eaaa
   trigger:
     platform: state
     entity_id: switch.office_light_switch
@@ -11,7 +12,8 @@
         brightness: 255
         kelvin: 2700
 
-- alias: "Turn off office lights with wall switch"
+- alias: "Office Lights Off"
+  id: c6d0a0cf-2752-4884-8bac-ec146235fa4e
   trigger:
     platform: state
     entity_id: switch.office_light_switch
