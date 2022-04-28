@@ -44,5 +44,3 @@
   name: Accent Lights
   entities:
     - light.nanoleaf
-    - light.living_room_tv_lightstrip
-    - light.living_room_bloom

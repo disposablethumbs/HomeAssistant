@@ -1,71 +1,57 @@
 - name: Normal
   entities:
     light.kitchen:
-      state: 'on'
+      state: "on"
       brightness: 255
       kelvin: 2700
     light.living_room:
-      state: 'on'
+      state: "on"
       brightness: 255
       kelvin: 2700
     group.accent_lights:
-      state: 'off'
+      state: "off"
   id: 5923a6594f7f42b4b2926ee92ce67ae1
 - name: Urban Temple
   entities:
     light.kitchen:
-      state: 'off'
-    switch.living_room_chandelier: 'on'
-    switch.living_room_dome: 'on'
+      state: "off"
+    switch.living_room_chandelier: "on"
+    switch.living_room_dome: "on"
     light.living_room:
-      state: 'on'
+      state: "on"
       brightness: 150
       rgb_color:
-      - 255
-      - 127
-      - 25
-    light.living_room_tv_lightstrip:
-      state: 'on'
-      brightness: 210
-      rgb_color:
-      - 255
-      - 57
-      - 196
+        - 255
+        - 127
+        - 25
     light.nanoleaf:
-      state: 'on'
+      state: "on"
       brightness: 30
       effect: Pink Sizzle
-    switch.office_light_switch: 'off'
+    switch.office_light_switch: "off"
   id: 029c07e3a9c249818ec7abc0517036b3
 - name: Purple Chill
   entities:
     light.kitchen:
-      state: 'off'
-    switch.living_room_chandelier: 'on'
-    switch.living_room_dome: 'on'
+      state: "off"
+    switch.living_room_chandelier: "on"
+    switch.living_room_dome: "on"
     light.living_room:
-      state: 'on'
+      state: "on"
       brightness: 70
       rgb_color:
-      - 131
-      - 78
-      - 255
-    light.living_room_tv_lightstrip:
-      state: 'on'
-      brightness: 230
-      rgb_color:
-      - 237
-      - 80
-      - 255
+        - 131
+        - 78
+        - 255
     light.living_room_bloom:
-      state: 'on'
+      state: "on"
       brightness: 210
       rgb_color:
-      - 255
-      - 76
-      - 249
+        - 255
+        - 76
+        - 249
     light.nanoleaf:
-      state: 'on'
+      state: "on"
       brightness: 30
       effect: Purple flow
   id: b7392534aee941a5845a1ee4ec2ab495
