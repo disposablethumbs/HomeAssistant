@@ -98,7 +98,6 @@ wemo:
     - !secret ip_office_lightswitch
     - !secret ip_bedroom_lightswitch
     - !secret ip_pc_outlet
-    - !secret ip_modem
 
 automation: !include_dir_merge_list automation/
 binary_sensor: !include binary_sensors.yaml
