@@ -7,12 +7,13 @@ all_lights_simple:
     - switch.living_room_dome
     - light.hallway
     - light.nanoleaf
-    - light.living_room_tv_lightstrip
+
     - light.living_room_bloom
     - switch.office_light_switch
     - light.office_lamp_top
     - light.office_lamp_bottom
     - switch.bedroom_light_switch
+    - light.bedroom_tv_lightstrip
     - light.balcony_lightstrip
     - light.christmas_tree
 
@@ -43,7 +44,6 @@ accent_lights:
   name: Accent Lights
   entities:
     - light.nanoleaf
-    - light.living_room_tv_lightstrip
     - light.living_room_bloom
 
 light_switches:
@@ -54,3 +54,9 @@ light_switches:
     - switch.living_room_dome
     - switch.office_light_switch
     - switch.bedroom_light_switch
+
+wake_up_lights:
+  name: Wake up Lights
+  entities:
+    - light.alarm_clock
+    - light.bedroom_tv_lightstrip

@@ -124,8 +124,6 @@ views:
           - type: section
             label: Accent
           - light.nanoleaf
-          - entity: light.living_room_tv_lightstrip
-            name: TV
 
           # Bedroom
           - type: section

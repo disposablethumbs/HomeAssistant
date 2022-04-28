@@ -1,9 +1,9 @@
 hue_light_groups:
   name: Hue Rooms
   entities:
-   - light.kitchen
-   - light.living_room
-   - light.office
+    - light.kitchen
+    - light.living_room
+    - light.office
 
 hue_kitchen_lights:
   name: Kitchen
@@ -20,14 +20,9 @@ hue_living_room_lights:
     - light.living_room_dome_right
     - light.hallway
 hue_office_lights:
-  name: Office Lights 
+  name: Office Lights
   entities:
     - light.office_dome_left
     - light.office_dome_right
     - light.office_lamp_top
     - light.office_lamp_bottom
-hue_accent_lights:
-  name: Accent Lights 
-  entities:
-    - light.living_room_tv_lightstrip
-    - light.living_room_bloom
