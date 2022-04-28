@@ -7,16 +7,6 @@
     for:
       minutes: 5
   action:
-    service: switch.turn_off
-    entity_id: switch.bedroom_tv
-
-- alias: "Bedroom Chromecast Auto Off"
-  id: 15d09d34-d449-4a7e-9c44-ff41195af745
-  trigger:
-    platform: state
-    entity_id: switch.bedroom_tv
-    to: "off"
-  action:
     service: media_player.turn_off
     entity_id: media_player.bedroom_chromecast
 
@@ -32,8 +22,6 @@
       value_template: '{% if states.light.bedroom_lights.state == "on"  %}{{ states.light.bedroom_lights.attributes.brightness }}{% else %}0{% endif %}'
       above: 150
   action:
-    - service: switch.turn_on
-      entity_id: switch.bedroom_tv
     - service: light.turn_on
       data:
         brightness: 150
@@ -45,3 +33,21 @@
       data:
         entity_id: media_player.bedroom_chromecast
         volume_level: 0.5
+
+- alias: "Sync Harmony with Living Room Chromecast"
+  id: 73b078dc-1f3a-4b49-9ff1-e5173b41489f
+  trigger:
+    - platform: state
+      entity_id: media_player.living_room_chromecast
+      to: "playing"
+  action:
+    - service: remote.turn_on
+      data:
+        entity_id: remote.living_room
+        activity: "Watch Google TV"
+    - condition: "{{ state_attr('light.living_room','brightness') > 160 }}"
+    - service: scene.turn_on
+      target:
+        entity_id:
+          - scene.kitchen_dimmed
+          - scene.living_room_dimmed
