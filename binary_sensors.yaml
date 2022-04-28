@@ -29,6 +29,13 @@
       prob_given_false: 0.1
       to_state: home
 
+# Workday
+- platform: workday
+  country: "CA"
+  province: "ON"
+  remove_holidays:
+    - "Remembrance"
+
 # Check network connectivity
 - platform: ping
   host: www.google.com
